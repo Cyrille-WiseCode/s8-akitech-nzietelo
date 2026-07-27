@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BraCovoit — Détail du trajet</title>
+  <link rel="stylesheet" href="trajet.css">
+</head>
+<body id="page-trajet">
+
+  <!-- NAVIGATION — TODO (Dev FS3) -->
+
+  <main>
+    <!-- =====================================================================
+         ENTÊTE TRAJET — TODO (Dev FS3)
+         Mettre en forme le titre du trajet, l'heure, la date, le prix, le
+         commentaire éventuel et le badge de disponibilité. Le badge reçoit
+         dynamiquement une classe parmi badge-dispo / badge-limite /
+         badge-complet — prévoyez les 3 styles.
+
+         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
+         ===================================================================== -->
+    <section class="entete-trajet">
+      <h1 id="trajet-titre"></h1>
+      <p>Heure : <span id="trajet-heure"></span></p>
+      <p>Date : <span id="trajet-date"></span></p>
+      <p>Prix : <span id="trajet-prix"></span></p>
+      <p>Commentaire : <span id="trajet-commentaire"></span></p>
+      <span id="badge-places" class="badge"></span>
+    </section>
+
+    <!-- =====================================================================
+         FICHE CONDUCTEUR — TODO (Dev FS3)
+         Mettre en forme l'encart conducteur : nom, véhicule, note,
+         expérience. Un visuel type "carte profil" est attendu.
+
+         *** NE PAS MODIFIER les id ci-dessous ***
+         ===================================================================== -->
+    <section class="fiche-conducteur">
+      <h2>Conducteur</h2>
+      <p>Nom : <span id="conducteur-nom"></span></p>
+      <p>Véhicule : <span id="conducteur-vehicule"></span></p>
+      <p>Note : <span id="conducteur-note"></span></p>
+      <p>Expérience : <span id="conducteur-trajets"></span></p>
+    </section>
+
+    <!-- BOUTON RÉSERVER — TODO (Dev FS3) : style du bouton (désactivé si
+         trajet complet — main.js gère l'attribut disabled automatiquement).
+         NE PAS MODIFIER l'id — main.js branche l'action au clic. -->
+    <button id="btn-reserver">Réserver une place</button>
+  </main>
+
+  <div id="erreur-globale" hidden></div>
+
+  <script src="../functions.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>
