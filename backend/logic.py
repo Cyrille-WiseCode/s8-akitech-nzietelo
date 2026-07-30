@@ -18,14 +18,13 @@ déjà entièrement résolue, avec des commentaires qui expliquent chaque
 le niveau de détail attendus. Toutes les autres fonctions sont à
 compléter (repérez les `# TODO : à compléter` suivis de `pass`).
 
-Le fichier est découpé en 3 zones de responsabilité. Si vous êtes 2 Data
-Scientists, répartissez-vous les 3 zones à deux (par exemple une personne
-prend la zone C entièrement, l'autre les zones A et B). Si vous êtes 3,
-une zone chacun.
+Le fichier est découpé en 4 zones de responsabilité. Répartissez-vous les
+zones selon le nombre de personnes dans l'équipe.
 
   - ZONE A : Recherche & disponibilité      — 5 fonctions
   - ZONE B : Réservations & suivi           — 5 fonctions
   - ZONE C : Statistiques & tableau de bord — 5 fonctions
+  - ZONE D : Comptes & authentification     — 2 fonctions
 
 Quand vos fonctions sont correctes :
   1. les tests passent au vert   (python -m pytest -v, depuis backend/)
@@ -489,6 +488,56 @@ def calculer_indicateurs_dashboard(trajets, reservations, conducteurs):
             "total_reservations_actives": 2,
             "note_moyenne_conducteurs": 4.7
         }
+    """
+    # TODO : à compléter
+    pass
+
+
+# ========================================================================
+# ZONE D — Comptes & authentification
+# ========================================================================
+
+def verifier_telephone_disponible(comptes, telephone):
+    """
+    Vérifie qu'aucun compte existant n'utilise déjà ce numéro de
+    téléphone. Utilisée avant la création d'un compte, pour empêcher
+    les doublons d'inscription.
+
+    Paramètres :
+        comptes   : liste de dict, chacun avec une clé "telephone" (str)
+        telephone : numéro à vérifier (str), ex. "066123456"
+
+    Retourne :
+        True si aucun compte de la liste n'a ce téléphone, False sinon.
+
+    Exemple :
+        comptes = [{"id": 1, "telephone": "066123456"}]
+        verifier_telephone_disponible(comptes, "066123456") -> False
+        verifier_telephone_disponible(comptes, "055999999") -> True
+    """
+    # TODO : à compléter
+    pass
+
+
+def trouver_compte_par_telephone(comptes, telephone):
+    """
+    Retourne le compte correspondant à un numéro de téléphone donné.
+    Utilisée lors du login pour récupérer le compte dont il faut vérifier
+    le mot de passe.
+
+    Paramètres :
+        comptes   : liste de dict, chacun avec une clé "telephone" (str)
+        telephone : numéro recherché (str), ex. "066123456"
+
+    Retourne :
+        le dict compte dont "telephone" correspond exactement, ou None
+        si aucun compte ne correspond.
+
+    Exemple :
+        comptes = [{"id": 1, "telephone": "066123456", "nom": "Franck"}]
+        trouver_compte_par_telephone(comptes, "066123456")
+        -> {"id": 1, "telephone": "066123456", "nom": "Franck"}
+        trouver_compte_par_telephone(comptes, "055999999") -> None
     """
     # TODO : à compléter
     pass

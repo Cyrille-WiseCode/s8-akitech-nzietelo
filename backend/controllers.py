@@ -7,8 +7,10 @@ que vous complétez dans logic.py.
 import json
 import os
 import logic
+from werkzeug.security import generate_password_hash, check_password_hash
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "data", "trajets.json")
+COMPTES_PATH = os.path.join(os.path.dirname(__file__), "data", "comptes.json")
 
 
 def _load():
@@ -18,6 +20,16 @@ def _load():
 
 def _save(data):
     with open(DATA_PATH, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def _load_comptes():
+    with open(COMPTES_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _save_comptes(data):
+    with open(COMPTES_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
@@ -103,3 +115,26 @@ def get_dashboard():
 
 def lister_quartiers():
     return _load()["quartiers"]
+
+
+def creer_compte(nom, telephone, mot_de_passe):
+    d = _load_comptes()
+    if not logic.verifier_telephone_disponible(d["comptes"], telephone):
+        return {"ok": False, "erreur": "Ce numéro est déjà inscrit"}
+    nouveau = {
+        "id": max([c["id"] for c in d["comptes"]] + [0]) + 1,
+        "nom": nom,
+        "telephone": telephone,
+        "mot_de_passe_hash": generate_password_hash(mot_de_passe),
+    }
+    d["comptes"].append(nouveau)
+    _save_comptes(d)
+    return {"ok": True, "compte": {"id": nouveau["id"], "nom": nom, "telephone": telephone}}
+
+
+def login(telephone, mot_de_passe):
+    d = _load_comptes()
+    compte = logic.trouver_compte_par_telephone(d["comptes"], telephone)
+    if compte is None or not check_password_hash(compte["mot_de_passe_hash"], mot_de_passe):
+        return {"ok": False, "erreur": "Numéro ou mot de passe incorrect"}
+    return {"ok": True, "compte": {"id": compte["id"], "nom": compte["nom"], "telephone": compte["telephone"]}}

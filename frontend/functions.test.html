@@ -85,6 +85,16 @@
     assert("getBadgeDisponibilite — 1", {libelle:"1 place",classe:"badge-limite"}, getBadgeDisponibilite(1));
     assert("getBadgeDisponibilite — 3", {libelle:"3 places",classe:"badge-dispo"}, getBadgeDisponibilite(3));
 
+    // Dev FS7
+    const okInscription = {nom:"Marie", telephone:"066123456", mot_de_passe:"secret"};
+    assert("validerFormulaireInscription — OK", true, validerFormulaireInscription(okInscription).valide);
+    const badInscription = {nom:"", telephone:"123", mot_de_passe:"ab"};
+    assert("validerFormulaireInscription — KO", false, validerFormulaireInscription(badInscription).valide);
+    const okLogin = {telephone:"066123456", mot_de_passe:"secret"};
+    assert("validerFormulaireLogin — OK", true, validerFormulaireLogin(okLogin).valide);
+    const badLogin = {telephone:"", mot_de_passe:""};
+    assert("validerFormulaireLogin — KO", false, validerFormulaireLogin(badLogin).valide);
+
     const summary = document.getElementById("summary");
     summary.textContent = `${passed} tests réussis / ${failed} échoués (${passed + failed} au total)`;
     summary.className = failed === 0 ? "all-pass" : "some-fail";

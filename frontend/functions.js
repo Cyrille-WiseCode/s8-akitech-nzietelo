@@ -178,6 +178,37 @@ function getBadgeDisponibilite(placesRestantes) {
 }
 
 // ============================================================================
+// Dev FS7 — pages Inscription + Login
+// ============================================================================
+
+function validerFormulaireInscription(formulaire) {
+    /**
+     * Valide le formulaire d'inscription.
+     * @param {Object} formulaire - avec les clés : nom, telephone, mot_de_passe
+     * @return {Object} - {valide: true/false, erreurs: [liste de messages]}
+     *
+     * Règles :
+     * - nom obligatoire (non vide après trim)
+     * - telephone obligatoire, au moins 9 chiffres
+     * - mot_de_passe obligatoire, au moins 4 caractères
+     */
+    // TODO
+}
+
+function validerFormulaireLogin(formulaire) {
+    /**
+     * Valide le formulaire de connexion.
+     * @param {Object} formulaire - avec les clés : telephone, mot_de_passe
+     * @return {Object} - {valide: true/false, erreurs: [liste de messages]}
+     *
+     * Règles :
+     * - telephone obligatoire
+     * - mot_de_passe obligatoire
+     */
+    // TODO
+}
+
+// ============================================================================
 // NE PAS MODIFIER : export pour les tests
 // ============================================================================
 if (typeof module !== "undefined" && module.exports) {
@@ -188,5 +219,6 @@ if (typeof module !== "undefined" && module.exports) {
         validerFormulaireProposer, formaterMessageConfirmation,
         filtrerReservationsParStatut, calculerTotalDepenseParPassager,
         calculerPourcentageOccupation, getBadgeDisponibilite,
+        validerFormulaireInscription, validerFormulaireLogin,
     };
 }

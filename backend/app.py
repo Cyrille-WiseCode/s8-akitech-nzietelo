@@ -10,12 +10,15 @@ Routes :
   GET  /api/reservations/<tel>      → historique d'un passager
   GET  /api/dashboard               → indicateurs du tableau de bord
   GET  /api/quartiers               → liste des quartiers
+  POST /api/inscription             → créer un compte
+  POST /api/login                   → se connecter
 """
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from controllers import (
     lister_trajets_disponibles, get_trajet, creer_reservation,
     lister_reservations_passager, get_dashboard, lister_quartiers,
+    creer_compte, login,
 )
 
 app = Flask(__name__)
@@ -53,6 +56,7 @@ def route_racine():
         "routes_disponibles": [
             "/api/trajets", "/api/trajets/<id>", "/api/reservations",
             "/api/reservations/<tel>", "/api/dashboard", "/api/quartiers",
+            "/api/inscription", "/api/login",
         ],
     })
 
@@ -99,6 +103,33 @@ def route_dashboard():
 @app.route("/api/quartiers", methods=["GET"])
 def route_quartiers():
     return jsonify(lister_quartiers())
+
+
+@app.route("/api/inscription", methods=["POST"])
+def route_inscription():
+    payload = request.get_json(force=True) or {}
+    nom = payload.get("nom")
+    telephone = payload.get("telephone")
+    mot_de_passe = payload.get("mot_de_passe")
+    if not all([nom, telephone, mot_de_passe]):
+        return jsonify({"erreur": "Champs manquants"}), 400
+    result = creer_compte(nom, telephone, mot_de_passe)
+    if not result.get("ok"):
+        return jsonify(result), 400
+    return jsonify(result), 201
+
+
+@app.route("/api/login", methods=["POST"])
+def route_login():
+    payload = request.get_json(force=True) or {}
+    telephone = payload.get("telephone")
+    mot_de_passe = payload.get("mot_de_passe")
+    if not all([telephone, mot_de_passe]):
+        return jsonify({"erreur": "Champs manquants"}), 400
+    result = login(telephone, mot_de_passe)
+    if not result.get("ok"):
+        return jsonify(result), 401
+    return jsonify(result), 200
 
 
 if __name__ == "__main__":

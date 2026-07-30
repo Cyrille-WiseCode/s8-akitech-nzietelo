@@ -9,6 +9,7 @@ from logic import (
     calculer_taux_annulation, compter_trajets_par_quartier_depart,
     top_conducteurs_par_note, calculer_prix_moyen_par_quartier,
     identifier_trajet_le_plus_reserve, calculer_indicateurs_dashboard,
+    verifier_telephone_disponible, trouver_compte_par_telephone,
 )
 
 # === ZONE A ===
@@ -205,3 +206,28 @@ def test_calculer_indicateurs_independance():
     for fn in ["filtrer_trajets_disponibles", "compter_reservations_par_trajet",
                "top_conducteurs_par_note"]:
         assert fn + "(" not in src, f"calculer_indicateurs_dashboard ne doit pas appeler {fn}"
+
+# === ZONE D ===
+
+def test_verifier_telephone_disponible_pris():
+    comptes = [{"id": 1, "telephone": "066123456"}]
+    assert verifier_telephone_disponible(comptes, "066123456") is False
+
+def test_verifier_telephone_disponible_libre():
+    comptes = [{"id": 1, "telephone": "066123456"}]
+    assert verifier_telephone_disponible(comptes, "055999999") is True
+
+def test_verifier_telephone_disponible_liste_vide():
+    assert verifier_telephone_disponible([], "066123456") is True
+
+def test_trouver_compte_par_telephone_existant():
+    comptes = [
+        {"id": 1, "telephone": "066123456", "nom": "Franck"},
+        {"id": 2, "telephone": "068234567", "nom": "Aurélie"},
+    ]
+    r = trouver_compte_par_telephone(comptes, "068234567")
+    assert r["nom"] == "Aurélie"
+
+def test_trouver_compte_par_telephone_absent():
+    comptes = [{"id": 1, "telephone": "066123456", "nom": "Franck"}]
+    assert trouver_compte_par_telephone(comptes, "055999999") is None

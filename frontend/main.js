@@ -19,8 +19,40 @@ async function api(path, options = {}) {
     return r.json();
 }
 
+// ==== SESSION CLIENT (localStorage) ====
+const SESSION_KEY = "bracovoit_session";
+
+function getSession() {
+    try { return JSON.parse(localStorage.getItem(SESSION_KEY)); }
+    catch { return null; }
+}
+
+function setSession(compte) {
+    localStorage.setItem(SESSION_KEY, JSON.stringify(compte));
+}
+
+function clearSession() {
+    localStorage.removeItem(SESSION_KEY);
+}
+
+function initNavSession() {
+    const el = document.getElementById("nav-session");
+    if (!el) return;
+    const session = getSession();
+    if (session) {
+        el.innerHTML = `Bonjour ${session.nom} <button id="btn-deconnexion">Déconnexion</button>`;
+        document.getElementById("btn-deconnexion").addEventListener("click", () => {
+            clearSession();
+            window.location.reload();
+        });
+    } else {
+        el.innerHTML = `<a href="../login/login.html">Se connecter</a> <a href="../inscription/inscription.html">S'inscrire</a>`;
+    }
+}
+
 // ==== ROUTAGE PAR PAGE ====
 document.addEventListener("DOMContentLoaded", () => {
+    initNavSession();
     if (document.getElementById("page-accueil"))       initAccueil();
     if (document.getElementById("page-recherche"))     initRecherche();
     if (document.getElementById("page-trajet"))        initTrajet();
@@ -28,6 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById("page-mes-trajets"))   initMesTrajets();
     if (document.getElementById("page-dashboard"))     initDashboard();
     if (document.getElementById("page-confirmation"))  initConfirmation();
+    if (document.getElementById("page-inscription"))   initInscription();
+    if (document.getElementById("page-login"))         initLogin();
 });
 
 // ==== PAGE ACCUEIL ====
@@ -127,15 +161,35 @@ async function initTrajet() {
         const badgeEl = document.getElementById("badge-places");
         if (badgeEl) { badgeEl.textContent = badge.libelle; badgeEl.className = "badge " + badge.classe; }
 
+        const form = document.getElementById("form-reservation");
         const btn = document.getElementById("btn-reserver");
-        if (btn) {
-            btn.disabled = t.places_restantes === 0;
-            btn.addEventListener("click", async () => {
-                const nom = prompt("Votre nom :");
-                const tel = prompt("Votre téléphone :");
-                if (!nom || !tel) return;
+        const errBox = document.getElementById("erreurs-form");
+        const inputNom = document.getElementById("r-nom");
+        const inputTel = document.getElementById("r-tel");
+
+        const session = getSession();
+        if (session && inputNom && inputTel) {
+            inputNom.value = session.nom;
+            inputTel.value = session.telephone;
+        }
+
+        if (btn) btn.disabled = t.places_restantes === 0;
+
+        if (form) {
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const nom = inputNom.value.trim();
+                const tel = inputTel.value.trim();
+                if (!nom || !tel) {
+                    if (errBox) {
+                        errBox.hidden = false;
+                        errBox.innerHTML = "<ul><li>Nom et téléphone requis</li></ul>";
+                    }
+                    return;
+                }
+                if (errBox) errBox.hidden = true;
                 try {
-                    const res = await api("/reservations", {
+                    await api("/reservations", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ trajet_id: t.id, passager_nom: nom, passager_tel: tel }),
@@ -221,6 +275,12 @@ async function initMesTrajets() {
 
     if (btnCharger) btnCharger.addEventListener("click", charger);
     if (filtreStatut) filtreStatut.addEventListener("change", charger);
+
+    const session = getSession();
+    if (session) {
+        inputTel.value = session.telephone;
+        charger();
+    }
 }
 
 // ==== PAGE DASHBOARD ====
@@ -274,6 +334,68 @@ function initConfirmation() {
         const lien = document.getElementById("lien-mes-trajets");
         if (lien) lien.href = `../mes-trajets/mes-trajets.html?tel=${tel}`;
     }
+}
+
+// ==== PAGE INSCRIPTION ====
+function initInscription() {
+    const form = document.getElementById("form-inscription");
+    const errBox = document.getElementById("erreurs-form");
+    if (!form) return;
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formulaire = {
+            nom: document.getElementById("i-nom").value,
+            telephone: document.getElementById("i-telephone").value,
+            mot_de_passe: document.getElementById("i-mot-de-passe").value,
+        };
+        const validation = validerFormulaireInscription(formulaire);
+        if (!validation.valide) {
+            errBox.hidden = false;
+            errBox.innerHTML = "<ul>" + validation.erreurs.map(e => `<li>${e}</li>`).join("") + "</ul>";
+            return;
+        }
+        errBox.hidden = true;
+        try {
+            await api("/inscription", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formulaire),
+            });
+            window.location.href = "../login/login.html";
+        } catch (err) { showError(err.message); }
+    });
+}
+
+// ==== PAGE LOGIN ====
+function initLogin() {
+    const form = document.getElementById("form-login");
+    const errBox = document.getElementById("erreurs-form");
+    if (!form) return;
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formulaire = {
+            telephone: document.getElementById("l-telephone").value,
+            mot_de_passe: document.getElementById("l-mot-de-passe").value,
+        };
+        const validation = validerFormulaireLogin(formulaire);
+        if (!validation.valide) {
+            errBox.hidden = false;
+            errBox.innerHTML = "<ul>" + validation.erreurs.map(e => `<li>${e}</li>`).join("") + "</ul>";
+            return;
+        }
+        errBox.hidden = true;
+        try {
+            const result = await api("/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formulaire),
+            });
+            setSession(result.compte);
+            window.location.href = "../accueil/index.html";
+        } catch (err) { showError(err.message); }
+    });
 }
 
 // ==== HELPERS ====

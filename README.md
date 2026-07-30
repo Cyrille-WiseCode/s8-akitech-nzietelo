@@ -1,6 +1,6 @@
 # BraCovoit — Covoiturage inter-quartiers, Brazzaville
 
-Bienvenue dans votre startup. Ce dépôt est le **squelette** de l'application : un mini-site de 7 pages pour organiser le covoiturage entre habitants des quartiers de Brazzaville. La structure est déjà en place ; **votre équipe complète les fonctions manquantes et construit les pages**.
+Bienvenue dans votre startup. Ce dépôt est le **squelette** de l'application : un mini-site de 9 pages pour organiser le covoiturage entre habitants des quartiers de Brazzaville. La structure est déjà en place ; **votre équipe complète les fonctions manquantes et construit les pages**.
 
 Vous avez **une semaine complète** pour ce projet.
 
@@ -40,8 +40,8 @@ l'API est bien ouvert et actif (pas d'erreur affichée dedans). Si vous   venez 
 
 | Parcours | Effectif | Vous complétez | Vous ne touchez PAS |
 | --- | --- | --- | --- |
-| **Data Science** | 1 à 3 personnes | `backend/logic.py` (15 fonctions) | `app.py`, `controllers.py` |
-| **Full Stack** | 6 personnes | *voir répartition ci-dessous* | `main.js` |
+| **Data Science** | 1 à 3 personnes | `backend/logic.py` (17 fonctions) | `app.py`, `controllers.py` |
+| **Full Stack** | 7 personnes | *voir répartition ci-dessous* | `main.js` |
 
 **Le nommage des champs est déjà fixé dans le code** (docstrings de `logic.py`, structure de `data/trajets.json`, IDs des éléments HTML). Vous n'avez pas à deviner ces noms — regardez les docstrings et le jeu de données pour comprendre le contrat technique attendu.
 
@@ -57,6 +57,7 @@ Chaque page est dans son propre sous-dossier avec son fichier CSS dédié. L'ess
 | Dev FS4 | `frontend/proposer/proposer.html` + `proposer.css` — formulaire conducteur | `validerFormulaireProposer`, `formaterMessageConfirmation` |
 | Dev FS5 | `frontend/mes-trajets/mes-trajets.html` + `mes-trajets.css` — historique passager | `filtrerReservationsParStatut`, `calculerTotalDepenseParPassager` |
 | Dev FS6 | `frontend/dashboard/dashboard.html` + `dashboard.css` **ET** `frontend/confirmation/confirmation.html` + `confirmation.css` | `calculerPourcentageOccupation`, `getBadgeDisponibilite` |
+| Dev FS7 | `frontend/inscription/inscription.html` + `inscription.css` **ET** `frontend/login/login.html` + `login.css` | `validerFormulaireInscription`, `validerFormulaireLogin` |
 
 Chaque page contient des commentaires `<!-- TODO -->` indiquant le travail attendu, avec le layout, les éléments à construire et les classes CSS que `main.js` utilise déjà pour injecter le contenu dynamique. **Les éléments marqués "NE PAS MODIFIER" (IDs, scripts, formulaires) sont le câblage vers le backend — ne les changez pas, sinon les données ne s'afficheront plus.**
 
@@ -68,7 +69,7 @@ pip install -r requirements.txt
 python -m pytest -v        # au départ : quelques tests verts, la majorité rouges
 ```
 
-Ouvrez `backend/logic.py` : la première fonction (`filtrer*trajets*disponibles`) est déjà résolue et commentée — regardez-la pour comprendre le style de code et le niveau de détail attendu, avant de compléter les 14 autres. Complétez-les (3 zones, à répartir selon votre effectif), relancez les tests jusqu'au **VERT**.
+Ouvrez `backend/logic.py` : la première fonction (`filtrer*trajets*disponibles`) est déjà résolue et commentée — regardez-la pour comprendre le style de code et le niveau de détail attendu, avant de compléter les 16 autres. Complétez-les (4 zones, à répartir selon votre effectif), relancez les tests jusqu'au **VERT**.
 
 Pour vérifier vos résultats via l'API une fois les tests au vert, lancez `python app.py` (voir "Lancer le projet en local" ci-dessus) puis testez dans le navigateur :
 
@@ -80,11 +81,18 @@ http://localhost:5000/api/quartiers
 http://localhost:5000/api/reservations/067111222
 ```
 
+L'inscription et le login se testent en POST (par exemple avec `curl` ou un client HTTP) :
+
+```
+POST http://localhost:5000/api/inscription   {"nom": "...", "telephone": "...", "mot_de_passe": "..."}
+POST http://localhost:5000/api/login          {"telephone": "...", "mot_de_passe": "..."}
+```
+
 ## Équipe Full Stack — workflow
 
 1. Ouvrez `frontend/functions.test.html` dans le navigateur → la majorité
 
-des tests sont rouges au départ (23 tests, 2 par personne).
+des tests sont rouges au départ (27 tests, 2 par personne).
 
 1. Complétez vos 2 fonctions dans `frontend/functions.js`.
 2. Construisez vos pages HTML/CSS dans votre sous-dossier.
