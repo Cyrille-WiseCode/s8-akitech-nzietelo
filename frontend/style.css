@@ -1,0 +1,115 @@
+:root{
+    --lime: #C9F031;
+    --noir: #111111;
+    --blanc: #FFFFFF;
+    --beige: #EDEBDD;
+    --gris: #8C8C86;
+    --gris-fonce: #201f16;
+    --font-global: 'Poppins', sans-serif;
+}
+/* ok */
+[data-theme="dark"] {
+    --lime: #D9F553;
+    --noir: #F5F4EC;
+    --blanc: #16160F; 
+    --beige: #201F16;
+    --gris: #9A9A8E;
+}
+
+/* ..............NOS CLASSES POUR DES STYLES PREDEFINIS......................*/
+*{
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-global);
+}
+
+/*.............Les boutons...........*/
+.btn_principal{
+    background-color: var(--lime);
+    color: var(--noir);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+.btn_principal:hover{
+    transform: scale(1.05);
+}
+
+.btn_secondaire{
+    background-color: var(--noir);
+    color: var(--blanc);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+.btn_secondaire:hover{
+    transform: scale(1.05);
+}
+
+.btn_transparant{
+    background-color: #daf5530e;
+    color: var(--noir);
+    border: solid 1px var(--noir);
+    padding: 10px 24px;
+    border-radius: 50px;
+    transition: 0.2s;
+}
+.btn_transparant:hover{
+    background-color: var(--lime);
+    color: var(--blanc);
+    border: none;
+}
+
+.btn_voir_plus{
+    background-color: #daf5530e;
+    border: none;
+    border-bottom: solid 1px var(--noir);
+    padding: 10px 24px;
+    width: 90px;
+    transition: 0.3s;
+}
+.btn_voir_plus:hover{
+    width: 9%;
+}
+/*...........LEs cards...........*/
+
+.card{
+    background-color: var(--blanc);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+/*...........LEs textes...........*/
+
+.texte_h1{
+    font-weight: 800;
+    font-size: 4rem;
+    color: var(--noir);
+}
+.texte_h2{
+    font-weight: 600;
+    font-size: 2rem;
+    color: var(--noir);   
+}
+.texte_h3{
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--noir);   
+}
+.soutitre_p{
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--noir);   
+}
+.texte_p{
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--gris);
+}
+.texte_label{
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--gris-fone);
+}
