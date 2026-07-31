@@ -2,7 +2,7 @@
 
 Bienvenue dans votre startup. Ce dépôt est le **squelette** de l'application : un mini-site de 9 pages pour organiser le covoiturage entre habitants des quartiers de Brazzaville. La structure est déjà en place ; **votre équipe complète les fonctions manquantes et construit les pages**.
 
-Vous avez **une semaine complète** pour ce projet.
+Vous avez **quelques jours** pour ce projet.
 
 ## Lancer le projet en local
 
