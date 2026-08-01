@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BraCovoit — Proposer un trajet</title>
+  <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="proposer.css">
 </head>
 <body id="page-proposer">
@@ -11,7 +12,7 @@
   <!-- NAVIGATION — TODO (Dev FS4) -->
 
   <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+  <div id="nav-session" class="navbar"></div>
 
   <main>
     <!-- =====================================================================
@@ -40,7 +41,7 @@
       <label for="p-prix">Prix par place (FCFA)</label>
       <input type="number" id="p-prix" min="1">
 
-      <button type="submit">Publier mon trajet</button>
+      <button type="submit">Publier mon trajet</button>      
     </form>
 
     <!-- Zone d'erreurs de validation — TODO (Dev FS4) : mettre en forme la
