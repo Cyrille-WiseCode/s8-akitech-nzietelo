@@ -1,6 +1,6 @@
 body{
     background-color: var(--beige);
-    padding: 20px;
+    padding: 30px;
 }
 
 .grille-indicateurs{
@@ -16,5 +16,33 @@ body{
         background-color: var(--blanc);
         border-radius: 20px;
         padding: 20px;
+    }
+}
+
+.top3conducteurs{
+    margin: 20px 0;
+}
+
+.trajetVedette{
+    margin-bottom: 20px;
+}
+
+.tableauRepartition{
+    margin-bottom: 20px;
+
+    table{
+        border-collapse: collapse;
+        min-width: 400px;
+        width: auto;
+        border: 1px solid black;
+
+        thead tr{
+            background-color: var(--gris);
+            color: var(--beige);
+            text-align: left;
+            tbody{
+                border:1px solid #ddd;
+            }
+        }
     }
 }
