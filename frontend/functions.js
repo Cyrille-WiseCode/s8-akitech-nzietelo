@@ -161,6 +161,11 @@ function calculerPourcentageOccupation(placesOccupees, placesTotales) {
      * Si placesTotales est 0, retourne 0.
      */
     // TODO
+    if(placesTotales===0){
+        return 0;
+    }
+    const pourcentage=(placesOccupees/placesTotales)*100;
+    return Math.round(pourcentage);
 }
 
 function getBadgeDisponibilite(placesRestantes) {
