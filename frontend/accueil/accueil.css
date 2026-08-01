@@ -3,43 +3,7 @@
 body{
     background-color: var(--beige);
 }
-/*..........barre de navigation..........*/
-.accueil_navbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
-    padding: 5px 20px;
-    background-color: var(--blanc);
-}
-.accueil_navbar div span{
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--noir);
-    text-shadow: var(--lime) 1px 1px 0px;
-}
-.accueil_navbar ul{
-    display: flex;
-    justify-content: space-between;
-    width: 600px;
-}
-.accueil_navbar ul li{
-    display: inline;
-}
-.accueil_navbar ul li a{
-    text-decoration: none;
-    color: var(--noir);
-    font-weight: 600;
-    font-size: 0.8rem;
-}
-.accueil_navbar div a{
-    text-decoration: none;
-    color: var(--noir);
-}
-.accueil_navbar ul li a:hover{
-    border-bottom: solid 2px var(--lime);
-    padding-bottom: 2px;
-}
+
 
 /*...........Hero Section...........*/
 .hero{
