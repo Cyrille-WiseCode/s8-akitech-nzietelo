@@ -1,20 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BraCovoit — Détail du trajet</title>
-  <link rel="stylesheet" href="trajet.css">
-</head>
-<body id="page-trajet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BraCovoit — Détail du trajet</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="trajet.css" />
+  </head>
+  <body id="page-trajet">
+    <nav class="navbar">
+      <a href="../accueil/index.html" class="logo texte_h3">BraCovoit</a>
 
-  <!-- NAVIGATION — TODO (Dev FS3) -->
+      <button id="burger-btn" class="burger-btn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+      <div id="nav-links" class="nav-links">
+        <a href="../accueil/index.html">Accueil</a>
+        <a href="../recherche/recherche.html">Recherche</a>
+        <a href="../proposer/proposer.html">Proposer un trajet</a>
+        <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+        <a href="../dashboard/dashboard.html">Tableau de bord</a>
 
-  <main>
-    <!-- =====================================================================
+        <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+        <div id="nav-session"></div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- =====================================================================
          ENTÊTE TRAJET — TODO (Dev FS3)
          Mettre en forme le titre du trajet, l'heure, la date, le prix, le
          commentaire éventuel et le badge de disponibilité. Le badge reçoit
@@ -23,31 +39,35 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <section class="entete-trajet">
-      <h1 id="trajet-titre"></h1>
-      <p>Heure : <span id="trajet-heure"></span></p>
-      <p>Date : <span id="trajet-date"></span></p>
-      <p>Prix : <span id="trajet-prix"></span></p>
-      <p>Commentaire : <span id="trajet-commentaire"></span></p>
-      <span id="badge-places" class="badge"></span>
-    </section>
+      <section class="entete-trajet card">
+        <h1 id="trajet-titre" class="texte_h1"></h1>
+        <p class="texte_p">Heure : <span id="trajet-heure"></span></p>
+        <p class="texte_p">Date : <span id="trajet-date"></span></p>
+        <p class="texte_h3">Prix : <span id="trajet-prix"></span></p>
+        <p class="texte_p">
+          Commentaire : <span id="trajet-commentaire"></span>
+        </p>
+        <span id="badge-places" class="badge"></span>
+      </section>
 
-    <!-- =====================================================================
+      <!-- =====================================================================
          FICHE CONDUCTEUR — TODO (Dev FS3)
          Mettre en forme l'encart conducteur : nom, véhicule, note,
          expérience. Un visuel type "carte profil" est attendu.
 
          *** NE PAS MODIFIER les id ci-dessous ***
          ===================================================================== -->
-    <section class="fiche-conducteur">
-      <h2>Conducteur</h2>
-      <p>Nom : <span id="conducteur-nom"></span></p>
-      <p>Véhicule : <span id="conducteur-vehicule"></span></p>
-      <p>Note : <span id="conducteur-note"></span></p>
-      <p>Expérience : <span id="conducteur-trajets"></span></p>
-    </section>
+      <section class="fiche-conducteur card">
+        <h2 class="texte_h2">Conducteur</h2>
+        <p class="soutitre_p">Nom : <span id="conducteur-nom"></span></p>
+        <p class="texte_p">Véhicule : <span id="conducteur-vehicule"></span></p>
+        <p class="texte_p">Note : <span id="conducteur-note"></span></p>
+        <p class="texte_p">
+          Expérience : <span id="conducteur-trajets"></span>
+        </p>
+      </section>
 
-    <!-- =====================================================================
+      <!-- =====================================================================
          FORMULAIRE DE RÉSERVATION — TODO (Dev FS3)
          Mettre en forme le formulaire : nom, téléphone, bouton (désactivé
          si trajet complet — main.js gère l'attribut disabled). Si
@@ -56,25 +76,27 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <form id="form-reservation">
-      <label for="r-nom">Votre nom</label>
-      <input type="text" id="r-nom">
+      <form id="form-reservation" class="card">
+        <label for="r-nom" class="texte_label">Votre nom</label>
+        <input type="text" id="r-nom" />
 
-      <label for="r-tel">Votre téléphone</label>
-      <input type="tel" id="r-tel">
+        <label for="r-tel" class="texte_label">Votre téléphone</label>
+        <input type="tel" id="r-tel" />
 
-      <button type="submit" id="btn-reserver">Réserver une place</button>
-    </form>
+        <button type="submit" id="btn-reserver" class="btn_principal">
+          Réserver une place
+        </button>
+      </form>
 
-    <!-- Zone d'erreurs de validation — TODO (Dev FS3) : mettre en forme la
+      <!-- Zone d'erreurs de validation — TODO (Dev FS3) : mettre en forme la
          liste <ul><li> injectée par main.js en cas de formulaire invalide.
          NE PAS MODIFIER l'id. -->
-    <div id="erreurs-form" hidden></div>
-  </main>
+      <div id="erreurs-form" class="erreurs" hidden></div>
+    </main>
 
-  <div id="erreur-globale" hidden></div>
+    <div id="erreur-globale" hidden></div>
 
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>

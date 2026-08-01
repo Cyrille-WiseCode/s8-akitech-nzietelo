@@ -67,7 +67,7 @@ function rechercherParMotCle(trajets, motCle) {
 }
 
 // ============================================================================
-// Dev FS3 — page Détail trajet
+// Dev FS3 — page Détail trajet(Jude Koy)
 // ============================================================================
 
 function formaterPrix(prix) {
@@ -77,7 +77,7 @@ function formaterPrix(prix) {
      * @return {string} - "5 000 FCFA"
      * Exemple : formaterPrix(500) → "500 FCFA", formaterPrix(1500) → "1 500 FCFA"
      */
-    // TODO
+    return prix.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " FCFA";
 }
 
 function formaterHeure(heure) {
@@ -86,7 +86,7 @@ function formaterHeure(heure) {
      * @param {string} heure - format "HH:MM" (ex: "07:30")
      * @return {string} - "07h30"
      */
-    // TODO
+    return heure.replace(":", "h");
 }
 
 // ============================================================================
