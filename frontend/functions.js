@@ -180,6 +180,15 @@ function getBadgeDisponibilite(placesRestantes) {
      * - 2+ places → {libelle: "N places", classe: "badge-dispo"}  (N = placesRestantes)
      */
     // TODO
+    if(placesRestantes===0){
+        return {libelle:"Complet", classe:"badge-complet"};
+    }
+    else if(placesRestantes===1){
+        return {libelle:"1 place", classe:"badge-limite"};
+    }
+    else{
+        return {libelle:`${placesRestantes} places`, classe:"badge-dispo"}
+    }
 }
 
 // ============================================================================
