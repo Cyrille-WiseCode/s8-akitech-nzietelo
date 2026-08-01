@@ -151,6 +151,38 @@
     border-bottom: solid 2px var(--lime);
     padding-bottom: 2px;
 }
+/*.........Footer.........*/
+footer{
+    background-color: var(--gris-fonce);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 150px;
+
+}
+footer ul{
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+}
+footer ul li{
+    display: inline;
+}
+footer ul li a{
+    text-decoration: none;
+    color: var(--gris);
+}
+.footer ul li a:hover{
+    border-bottom: solid 2px var(--lime);
+    padding-bottom: 2px;
+}
+footer p {
+    color: var(--blanc);
+}
+
+
 
 @media screen and (max-width: 1066px){
     .accueil_navbar{

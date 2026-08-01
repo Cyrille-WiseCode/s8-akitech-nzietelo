@@ -30,14 +30,14 @@ body{
     grid-column: 1 / 5;
     background-color: var(--beige);
     border-radius: 0 160% 0 0;
-    border-top: solid 2px var(--lime);
+    border-top: dashed 3px var(--lime);
 }
 
 .stylei_item2{
     grid-row: 7/ 8;
     grid-column: 5 / 7;
     background-color: var(--beige);
-    border-top: solid 2px var(--lime);
+    border-top: dashed 3px var(--lime);
     border-radius: 15px 0 0 0;
 }
 .hero_h1{
@@ -69,7 +69,7 @@ body{
 /*............Projection section........*/
 .projection{
     padding: 30px 20px;
-    background-color: var(--beige);
+    background-color: var(--blanc);
     height: auto;
 }
 .projection h2{
@@ -82,7 +82,7 @@ body{
 }
 .projection_item1{
     background-color: var(--noir);
-    border-right: solid 2px var(--lime);
+    border: solid 2px var(--lime);
     border-radius: 15px 0 0 15px;
     padding: 10px;
     display: flex;
@@ -114,7 +114,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     height: auto;
-    margin-top: 70px;
+    margin-top: 30px;
 }
 .fonction_cover{
     background-color: #111111da;
@@ -163,6 +163,7 @@ body{
     height: auto;
     padding: 20px;
     background-color: var(--blanc);
+    margin-top: 30px;
 }
 .faq_item{
     width: auto;
