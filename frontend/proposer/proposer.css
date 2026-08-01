@@ -35,6 +35,11 @@ form{
         display: block;
         margin-bottom: 6px;
     }
+
+    span{
+        color:rgb(184, 25, 25);
+    }
+
     select, input{
         width: 100%;
         margin-bottom: 20px;
