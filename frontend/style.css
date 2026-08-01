@@ -81,7 +81,11 @@
     border-radius: 20px;
     padding: 20px;
 }
-
+.card_p{
+    color: var(--gris);
+    font-weight: 600;
+    font-size: 0.8rem;
+}
 /*...........LEs textes...........*/
 
 .texte_h1{
@@ -114,6 +118,7 @@
     font-size: 1rem;
     color: var(--gris-fone);
 }
+
 /*..........barre de navigation..........*/
 .accueil_navbar{
     display: flex;
@@ -151,6 +156,8 @@
     border-bottom: solid 2px var(--lime);
     padding-bottom: 2px;
 }
+
+
 /*.........Footer.........*/
 footer{
     background-color: var(--gris-fonce);
@@ -173,6 +180,7 @@ footer ul li{
 footer ul li a{
     text-decoration: none;
     color: var(--gris);
+    font-size: 0.8rem;
 }
 .footer ul li a:hover{
     border-bottom: solid 2px var(--lime);
@@ -180,6 +188,7 @@ footer ul li a{
 }
 footer p {
     color: var(--blanc);
+    font-size: 0.8rem;
 }
 
 
@@ -212,5 +221,10 @@ footer p {
         height: auto;
         align-items: center;
         margin: 10px 0px;
+    }
+    footer ul{
+        display: flex ;
+        flex-direction:column;
+        align-items: center;
     }
 }

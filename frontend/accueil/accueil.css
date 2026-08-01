@@ -108,7 +108,7 @@ body{
     text-shadow: var(--lime) 0px 0px 1px;
 }
 
-/*..............Todo Section.........*/
+/*..............Fonction Section.........*/
 .fonction{
     background-image: url('../images/proj_background.jpg');
     background-size: cover;
@@ -130,6 +130,11 @@ body{
     grid-template-rows: 200px;
     gap: 10px;
 }
+.fonction_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 .fonction_item span{
     padding: 6px 12px;
     border: solid 2px var(--lime);
@@ -147,10 +152,10 @@ body{
 .pourqoi_item{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: space-around;
     padding: 20px;
     background-color: var(--blanc);
-    border: dashed 3px var(--lime);
+    border: dashed 1px var(--lime);
 }
 
 /*.......FAQ......*/
