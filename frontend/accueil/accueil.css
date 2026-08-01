@@ -58,7 +58,7 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 200px;
-    margin: 100px auto 50px;
+    margin: 100px auto 20px;
     width: 1200px;
     gap: 20px;
 }
@@ -114,6 +114,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     height: auto;
+    margin-top: 70px;
 }
 .fonction_cover{
     background-color: #111111da;
@@ -133,3 +134,81 @@ body{
     padding: 6px 12px;
     border: solid 2px var(--lime);
 }
+
+/*......Pourquoi Section........*/
+.pourquoi_liste{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: 800px;
+    margin: 30px auto;
+    gap: 40px;
+}
+.pourqoi_item{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background-color: var(--blanc);
+    border: dashed 3px var(--lime);
+}
+
+/*.......FAQ......*/
+.faq{
+    margin-top: 70px;
+    text-align: center;
+}
+.faq_liste{
+    display: grid;
+    height: auto;
+    padding: 20px;
+    background-color: var(--blanc);
+}
+.faq_item{
+    width: auto;
+    margin: auto;
+}
+
+
+@media screen and (max-width: 1066px){ 
+    .indicateur_liste{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        width: auto;
+    }
+    .fonction_liste{
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+    .pourquoi_liste{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: auto;
+    }
+
+    }
+
+@media screen and (max-width: 768px){ 
+    .hero{
+        height: 1000px;
+        width: auto;
+    }
+    .indicateur_liste{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        width: auto;
+    }
+    .fonction_liste{
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+    .pourquoi_liste{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: auto;
+    }
+}
+
+
