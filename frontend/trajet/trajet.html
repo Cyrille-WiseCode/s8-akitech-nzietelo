@@ -1,80 +1,268 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BraCovoit — Détail du trajet</title>
-  <link rel="stylesheet" href="trajet.css">
-</head>
-<body id="page-trajet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nzietelo — Détail du trajet</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="trajet.css" />
+  </head>
+  <body id="page-trajet">
+    <nav class="navbar">
+      <a href="../accueil/index.html" class="logo texte_h3">Nzietelo</a>
 
-  <!-- NAVIGATION — TODO (Dev FS3) -->
+      <button id="burger-btn" class="burger-btn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+      <div id="nav-links" class="nav-links">
+        <a href="../accueil/index.html">Accueil</a>
+        <a href="../recherche/recherche.html">Recherche</a>
+        <a href="../proposer/proposer.html">Proposer un trajet</a>
+        <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
+        <a href="../dashboard/dashboard.html">Tableau de bord</a>
 
-  <main>
-    <!-- =====================================================================
-         ENTÊTE TRAJET — TODO (Dev FS3)
-         Mettre en forme le titre du trajet, l'heure, la date, le prix, le
-         commentaire éventuel et le badge de disponibilité. Le badge reçoit
-         dynamiquement une classe parmi badge-dispo / badge-limite /
-         badge-complet — prévoyez les 3 styles.
+        <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+        <div id="nav-session"></div>
+      </div>
+    </nav>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <section class="entete-trajet">
-      <h1 id="trajet-titre"></h1>
-      <p>Heure : <span id="trajet-heure"></span></p>
-      <p>Date : <span id="trajet-date"></span></p>
-      <p>Prix : <span id="trajet-prix"></span></p>
-      <p>Commentaire : <span id="trajet-commentaire"></span></p>
-      <span id="badge-places" class="badge"></span>
-    </section>
+    <main>
+      <h1 id="trajet-titre" class="texte_h1 trajet-titre-page"></h1>
 
-    <!-- =====================================================================
-         FICHE CONDUCTEUR — TODO (Dev FS3)
-         Mettre en forme l'encart conducteur : nom, véhicule, note,
-         expérience. Un visuel type "carte profil" est attendu.
+      <div class="trajet-hero">
+        <img
+          src="../../images/taxi-nzie.webp"
+          alt="Photo illustrative du trajet"
+          class="hero-image"
+        />
+      </div>
 
-         *** NE PAS MODIFIER les id ci-dessous ***
-         ===================================================================== -->
-    <section class="fiche-conducteur">
-      <h2>Conducteur</h2>
-      <p>Nom : <span id="conducteur-nom"></span></p>
-      <p>Véhicule : <span id="conducteur-vehicule"></span></p>
-      <p>Note : <span id="conducteur-note"></span></p>
-      <p>Expérience : <span id="conducteur-trajets"></span></p>
-    </section>
+      <div class="trajet-layout">
+        <div class="trajet-colonne-gauche">
+          <!--*** FICHE CONDUCTEUR — TODO (Dev FS3- Jude Koy) j'ai pas MODIFIER les id ci-dessous *** -->
 
-    <!-- =====================================================================
-         FORMULAIRE DE RÉSERVATION — TODO (Dev FS3)
-         Mettre en forme le formulaire : nom, téléphone, bouton (désactivé
-         si trajet complet — main.js gère l'attribut disabled). Si
-         l'utilisateur est connecté, les champs nom/téléphone sont
-         pré-remplis automatiquement par main.js (mais restent modifiables).
+          <section class="fiche-conducteur card">
+            <div class="conducteur-entete">
+              <div class="avatar-placeholder" aria-hidden="true">👤</div>
+              <div class="conducteur-info">
+                <p class="conducteur-nom-texte">
+                  Nom : <span id="conducteur-nom"></span>
+                </p>
+                <p class="conducteur-note-texte">
+                  ⭐ Note : <span id="conducteur-note"></span>
+                </p>
+              </div>
+            </div>
+            <p class="conducteur-description">
+              Expérience : <span id="conducteur-trajets"></span>
+            </p>
+          </section>
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <form id="form-reservation">
-      <label for="r-nom">Votre nom</label>
-      <input type="text" id="r-nom">
+          <!--*** ENTÊTE TRAJET — TODO (Dev FS3) (Dev FS3- Jude Koy) j'ai pas MODIFIER les id ci-dessous — main.js *** -->
 
-      <label for="r-tel">Votre téléphone</label>
-      <input type="tel" id="r-tel">
+          <section class="entete-trajet card">
+            <h2 class="texte_h2">Détails du trajet</h2>
 
-      <button type="submit" id="btn-reserver">Réserver une place</button>
-    </form>
+            <div class="trajet-ligne">
+              <svg viewBox="0 0 24 24" class="icon-pin">
+                <path
+                  d="M12 21s-7-6.5-7-11a7 7 0 0114 0c0 4.5-7 11-7 11z"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  fill="none"
+                />
+                <circle
+                  cx="12"
+                  cy="10"
+                  r="2.3"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  fill="none"
+                />
+              </svg>
+              <p class="texte_p">Heure : <span id="trajet-heure"></span></p>
+            </div>
 
-    <!-- Zone d'erreurs de validation — TODO (Dev FS3) : mettre en forme la
-         liste <ul><li> injectée par main.js en cas de formulaire invalide.
-         NE PAS MODIFIER l'id. -->
-    <div id="erreurs-form" hidden></div>
-  </main>
+            <div class="trajet-ligne">
+              <svg viewBox="0 0 24 24" class="icon-pin">
+                <rect
+                  x="4"
+                  y="5"
+                  width="16"
+                  height="16"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  fill="none"
+                />
+                <path
+                  d="M4 10h16M8 3v4M16 3v4"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <p class="texte_p">Date : <span id="trajet-date"></span></p>
+            </div>
 
-  <div id="erreur-globale" hidden></div>
+            <div class="trajet-ligne">
+              <svg viewBox="0 0 24 24" class="icon-pin">
+                <path
+                  d="M21 11.5a8.38 8.38 0 01-1.9 5.4A8.5 8.5 0 013 12a8.5 8.5 0 018.5-8.5 8.38 8.38 0 015.4 1.9L21 11.5z"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  fill="none"
+                />
+              </svg>
+              <p class="texte_p">
+                Commentaire :
+                <span id="trajet-commentaire"></span>
+              </p>
+            </div>
+          </section>
 
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+          <section class="carte-vehicule card">
+            <div class="vehicule-entete">
+              <img
+                src="../../images/taxi-nzie2.webp"
+                alt="Photo du véhicule"
+                class="vehicule-photo"
+              />
+              <div class="vehicule-info">
+                <p class="vehicule-titre-texte"> Véhicule et équipements</p>
+                <p class="vehicule-valeur-texte">
+                  Véhicule : <span id="conducteur-vehicule"></span>
+                </p>
+              </div>
+            </div>
+
+            <div class="amenities">
+              <span class="amenity">
+                <svg viewBox="0 0 24 24" class="icon">
+                  <path
+                    d="M12 2v20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1M2 12h20"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                Clim
+              </span>
+              <span class="amenity">
+                <svg viewBox="0 0 24 24" class="icon">
+                  <path
+                    d="M2 8.5a15 15 0 0120 0M5 12a10 10 0 0114 0M8.5 15.5a5 5 0 017 0"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="12" cy="19" r="1.2" fill="currentColor" />
+                </svg>
+                Wifi
+              </span>
+              <span class="amenity">
+                <svg viewBox="0 0 24 24" class="icon">
+                  <rect
+                    x="5"
+                    y="7"
+                    width="14"
+                    height="14"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    fill="none"
+                  />
+                  <path
+                    d="M9 7V5a3 3 0 016 0v2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    fill="none"
+                  />
+                </svg>
+                Bagages
+              </span>
+            </div>
+          </section>
+
+          <!-- C'est juste un Parcours purement décoratif, aucune vraie donnée GPS -->
+
+          <section class="carte-localisation card">
+            <div class="map-mock">
+              <div class="map-controls">
+                <span class="map-btn">+</span>
+                <span class="map-btn">−</span>
+              </div>
+
+              <svg viewBox="0 0 300 160" class="map-path">
+                <path
+                  d="M40 130 L55 110 L45 90 L60 70 L90 60 L200 40"
+                  stroke="var(--gris)"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+              </svg>
+
+              <div class="map-pin map-pin-depart">
+                <span class="pin-dot"></span>
+                <span class="pin-label">Départ</span>
+              </div>
+
+              <div class="map-pin map-pin-arrivee">
+                <span class="pin-dot pin-dot-arrivee"></span>
+                <span class="pin-label">Arrivée</span>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="trajet-colonne-droite">
+
+          <!-- NE PAS MODIFIER les id ci-dessous — main.js les utilise (Rien n'a été touché) -->
+
+          <div class="carte-reservation-popup card">
+            <div class="popup-section-prix">
+              <p class="popup-prix-label">Prix</p>
+              <p class="popup-prix-valeur"><span id="trajet-prix"></span></p>
+            </div>
+
+            <div class="popup-section-dispo">
+              <p class="popup-section-titre">Disponibilité</p>
+              <span id="badge-places" class="badge badge-dispo"></span>
+            </div>
+
+            <div class="popup-section-form">
+              <form id="form-reservation">
+                <label for="r-nom" class="texte_label">Votre nom</label>
+                <input type="text" id="r-nom" />
+
+                <label for="r-tel" class="texte_label">Votre téléphone</label>
+                <input type="tel" id="r-tel" />
+
+                <button type="submit" id="btn-reserver" class="btn_principal">
+                  Réserver une place
+                </button>
+              </form>
+
+              <!-- Zone d'erreurs de validation — NE PAS MODIFIER l'id -->
+              <div id="erreurs-form" class="erreurs" hidden></div>
+
+              <p class="popup-confiance">🔒 Réservation sécurisée</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="erreur-globale" hidden></div>
+
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>
