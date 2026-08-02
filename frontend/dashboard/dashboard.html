@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BraCovoit — Tableau de bord</title>
+  <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body id="page-dashboard">
@@ -12,7 +13,7 @@
 
   <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
   <div id="nav-session"></div>
-
+  
   <main>
     <!-- =====================================================================
          CARTES INDICATEURS — TODO (Dev FS6)
@@ -22,11 +23,11 @@
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
     <section class="grille-indicateurs">
-      <div class="carte-indicateur"><p class="label">Trajets disponibles</p><p id="d-trajets" class="valeur"></p></div>
-      <div class="carte-indicateur"><p class="label">Conducteurs actifs</p><p id="d-conducteurs" class="valeur"></p></div>
-      <div class="carte-indicateur"><p class="label">Réservations actives</p><p id="d-reservations" class="valeur"></p></div>
-      <div class="carte-indicateur"><p class="label">Note moyenne</p><p id="d-note" class="valeur"></p></div>
-      <div class="carte-indicateur"><p class="label">Taux d'annulation</p><p id="d-taux-annulation" class="valeur"></p></div>
+      <div class="carte-indicateur"><img src="/images/auto.png"><p class="label">Trajets disponibles</p><p id="d-trajets" class="valeur"></p></div>
+      <div class="carte-indicateur"><img src="/images/conducteur.png"><p class="label">Conducteurs actifs</p><p id="d-conducteurs" class="valeur"></p></div>
+      <div class="carte-indicateur"><img src="/images/reserve.png"><p class="label">Réservations actives</p><p id="d-reservations" class="valeur"></p></div>
+      <div class="carte-indicateur"><img src="/images/star.png"><p class="label">Note moyenne</p><p id="d-note" class="valeur"></p></div>
+      <div class="carte-indicateur"><img src="/images/taux.png"><p class="label">Taux d'annulation</p><p id="d-taux-annulation" class="valeur"></p></div>
     </section>
 
     <!-- =====================================================================
@@ -37,19 +38,23 @@
 
          *** NE PAS MODIFIER l'id ***
          ===================================================================== -->
-    <section>
-      <h2>Top 3 conducteurs</h2>
-      <ol id="d-top-conducteurs"></ol>
-    </section>
+    <div class="contraj">
+      <section class="top3conducteurs">
+        <h2 class="texte_h2">Top 3 conducteurs</h2>
+        <ol id="d-top-conducteurs"></ol>
+      </section>
 
-    <!-- TRAJET VEDETTE — TODO (Dev FS6) : mettre en avant visuellement
-         ce trajet (encart distinctif).
+      <!-- TRAJET VEDETTE — TODO (Dev FS6) : mettre en avant visuellement
+        ce trajet (encart distinctif).
          *** NE PAS MODIFIER l'id *** -->
-    <section>
-      <h2>Trajet vedette</h2>
-      <p id="d-trajet-top"></p>
-    </section>
-
+      <section class="trajetVedette">
+        <h2 class="texte_h2">Trajet vedette</h2>
+        <div class="trajetvedette">
+          <p id="d-trajet-top" class="texte_p"></p>
+          <img src="/images/btop.png" alt="trajet bacongo-potopoto">
+        </div>
+      </section>
+    </div>
     <!-- =====================================================================
          TABLEAU PAR QUARTIER — TODO (Dev FS6)
          Mettre en forme le tableau (bordures, alternance de lignes,
@@ -57,8 +62,8 @@
 
          *** NE PAS MODIFIER l'id ***
          ===================================================================== -->
-    <section>
-      <h2>Répartition par quartier de départ</h2>
+    <section class="tableauRepartition">
+      <h2 class="texte_h2">Répartition par quartier de départ</h2>
       <table>
         <thead><tr><th>Quartier</th><th>Nombre de trajets</th><th>Prix moyen</th></tr></thead>
         <tbody id="d-trajets-par-quartier"></tbody>

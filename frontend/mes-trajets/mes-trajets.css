@@ -1,0 +1,99 @@
+@import url('../style.css');
+body { background-color: var(--beige); min-height: 100vh; }
+.card { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); }
+
+main { max-width: 1000px; margin: 0 auto; padding: 24px 16px; display: flex; flex-direction: column; gap: 24px; }
+
+/* .....................Barre de recherche........................ */
+.barre-recherche-tel {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  background-color: var(--blanc);
+  flex-wrap: wrap;
+}
+
+.champ-recherche {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.input-tel, .select-statut {
+  padding: 10px 14px;
+  border: 1px solid var(--gris);
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+.input-tel:focus, .select-statut:focus {
+  outline: none;
+  border-color: var(--lime);
+}
+
+/* .....................Titre + total ........................ */
+.entete-liste {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.total-depense {
+  padding: 10px 20px;
+  border-radius: 50px;
+  background-color: var(--lime);
+  font-weight: 600;
+}
+
+/* .....................Grille de cartes........................ */
+.liste-reservations {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.carte-reservation {
+  background-color: var(--blanc);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.carte-reservation h3 {
+  font-family: var(--font-global);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.carte-reservation p {
+  color: var(--gris);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* .....................Statuts........................ */
+.statut {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.statut-effectue { background-color: var(--lime); color: var(--noir); }
+.statut-en_attente { background-color: #FFD54F; color: var(--noir); }
+.statut-annule { background-color: var(--noir); color: var(--blanc); }
+
+
+/* Responsive mobile */
+@media (max-width: 700px) {
+  .barre-recherche-tel { flex-direction: column; align-items: stretch; }
+  .entete-liste { flex-direction: column; align-items: flex-start; }
+}

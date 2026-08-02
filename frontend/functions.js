@@ -26,7 +26,14 @@ function compterTrajetsAujourdhui(trajets, dateAujourdhui) {
      * @return {number} - nombre de trajets à cette date
      * Exemple : compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"}], "2026-07-27") → 1
      */
-    // TODO
+    let number = 0;
+    for (let el of trajets) {
+        if (el.date === dateAujourdhui) {
+            number++;
+        }
+    }
+    return number;
+
 }
 
 function formaterQuartierPrincipal(compteParQuartier) {
@@ -36,7 +43,19 @@ function formaterQuartierPrincipal(compteParQuartier) {
      * @return {string} - ex: "Poto-Poto (8 trajets)"
      * Si l'objet est vide, retourne "Aucun trajet".
      */
-    // TODO
+    let maxEl = null;
+    let maxtrajet = 0;
+    if (Object.keys(compteParQuartier).length === 0) {
+        return "Aucun trajet";
+    } else {
+        for (let el in compteParQuartier) {
+            if (compteParQuartier[el] > maxtrajet) {
+                maxEl = el;
+                maxtrajet = compteParQuartier[el];
+            }
+        }
+        return `${maxEl} (${maxtrajet} trajets)`
+    }
 }
 
 // ============================================================================
@@ -52,6 +71,18 @@ function filtrerParQuartierDepart(trajets, quartier) {
      * Si quartier est vide ou null, retourne tous les trajets.
      */
     // TODO
+    let trajet_liste = [];
+
+    if(quartier === null || quartier === ""){
+        return trajets
+    }else{
+        for(let el of trajets){
+            if(el["quartier_depart"]=== quartier){
+                trajet_liste.push(el);
+            } 
+        }
+        return trajet_liste;
+    }
 }
 
 function rechercherParMotCle(trajets, motCle) {
@@ -64,7 +95,23 @@ function rechercherParMotCle(trajets, motCle) {
      * Si motCle est vide, retourne tous les trajets.
      */
     // TODO
+    let trajet_liste =[];
+    if(motCle === null || motCle === ""){
+        return trajets;
+    }else{
+        let mini_mot = motCle.toLowerCase();
+        for(el of trajets){
+            let depart = el["quartier_depart"].toLowerCase();
+            let arrivee = el["quartier_arrivee"].toLowerCase();
+            let comment = el["commentaire"].toLowerCase();
+            if( depart.includes(mini_mot) || arrivee.includes(mini_mot) || comment.includes(mini_mot) ) {
+                trajet_liste.push(el);
+            }
+        }
+        return trajet_liste;
+    }
 }
+
 
 // ============================================================================
 // Dev FS3 — page Détail trajet(Jude Koy)
@@ -131,7 +178,8 @@ function filtrerReservationsParStatut(reservations, statut) {
      * @param {string} statut - "effectue", "en_attente", "annule" ou "" pour toutes
      * @return {Array} - réservations correspondantes
      */
-    // TODO
+    if (!statut) return reservations;
+    return reservations.filter(r => r.statut === statut);
 }
 
 function calculerTotalDepenseParPassager(reservations) {
@@ -144,7 +192,9 @@ function calculerTotalDepenseParPassager(reservations) {
      *   3 réservations : 500 (effectue), 700 (en_attente), 400 (annule)
      *   → 1200
      */
-    // TODO
+    return reservations
+        .filter(r => r.statut !== "annule")
+        .reduce((total, r) => total + r.trajet.prix_place, 0);
 }
 
 // ============================================================================
@@ -161,6 +211,11 @@ function calculerPourcentageOccupation(placesOccupees, placesTotales) {
      * Si placesTotales est 0, retourne 0.
      */
     // TODO
+    if(placesTotales===0){
+        return 0;
+    }
+    const pourcentage=(placesOccupees/placesTotales)*100;
+    return Math.round(pourcentage);
 }
 
 function getBadgeDisponibilite(placesRestantes) {
@@ -175,6 +230,15 @@ function getBadgeDisponibilite(placesRestantes) {
      * - 2+ places → {libelle: "N places", classe: "badge-dispo"}  (N = placesRestantes)
      */
     // TODO
+    if(placesRestantes===0){
+        return {libelle:"Complet", classe:"badge-complet"};
+    }
+    else if(placesRestantes===1){
+        return {libelle:"1 place", classe:"badge-limite"};
+    }
+    else{
+        return {libelle:`${placesRestantes} places`, classe:"badge-dispo"}
+    }
 }
 
 // ============================================================================
