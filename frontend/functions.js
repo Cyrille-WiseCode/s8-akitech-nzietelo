@@ -71,6 +71,18 @@ function filtrerParQuartierDepart(trajets, quartier) {
      * Si quartier est vide ou null, retourne tous les trajets.
      */
     // TODO
+    let trajet_liste = [];
+
+    if(quartier === null || quartier === ""){
+        return trajets
+    }else{
+        for(let el of trajets){
+            if(el["quartier_depart"]=== quartier){
+                trajet_liste.push(el);
+            } 
+        }
+        return trajet_liste;
+    }
 }
 
 function rechercherParMotCle(trajets, motCle) {
@@ -83,7 +95,23 @@ function rechercherParMotCle(trajets, motCle) {
      * Si motCle est vide, retourne tous les trajets.
      */
     // TODO
+    let trajet_liste =[];
+    if(motCle === null || motCle === ""){
+        return trajets;
+    }else{
+        let mini_mot = motCle.toLowerCase();
+        for(el of trajets){
+            let depart = el["quartier_depart"].toLowerCase();
+            let arrivee = el["quartier_arrivee"].toLowerCase();
+            let comment = el["commentaire"].toLowerCase();
+            if( depart.includes(mini_mot) || arrivee.includes(mini_mot) || comment.includes(mini_mot) ) {
+                trajet_liste.push(el);
+            }
+        }
+        return trajet_liste;
+    }
 }
+
 
 // ============================================================================
 // Dev FS3 — page Détail trajet(Jude Koy)
@@ -183,6 +211,11 @@ function calculerPourcentageOccupation(placesOccupees, placesTotales) {
      * Si placesTotales est 0, retourne 0.
      */
     // TODO
+    if(placesTotales===0){
+        return 0;
+    }
+    const pourcentage=(placesOccupees/placesTotales)*100;
+    return Math.round(pourcentage);
 }
 
 function getBadgeDisponibilite(placesRestantes) {
@@ -197,6 +230,15 @@ function getBadgeDisponibilite(placesRestantes) {
      * - 2+ places → {libelle: "N places", classe: "badge-dispo"}  (N = placesRestantes)
      */
     // TODO
+    if(placesRestantes===0){
+        return {libelle:"Complet", classe:"badge-complet"};
+    }
+    else if(placesRestantes===1){
+        return {libelle:"1 place", classe:"badge-limite"};
+    }
+    else{
+        return {libelle:`${placesRestantes} places`, classe:"badge-dispo"}
+    }
 }
 
 // ============================================================================
