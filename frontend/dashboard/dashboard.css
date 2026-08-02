@@ -45,7 +45,8 @@ body{
         padding: 10px;
         background-color: var(--blanc);
         border-radius: 12px;
-        
+        overflow: scroll;
+
         .texte_h2{
             border-bottom: 1px solid rgba(128, 128, 128, 0.47);
         }
@@ -72,6 +73,13 @@ body{
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            img{
+                width: 154px;
+                height: 83px;
+                overflow: hidden;
+                object-fit: contain;
+            }
         }
     }
 }
