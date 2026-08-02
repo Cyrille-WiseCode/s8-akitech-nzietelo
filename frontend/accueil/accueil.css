@@ -57,13 +57,12 @@ body{
 .indicateur_liste{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 200px;
+    grid-template-rows: 1fr;
     margin: 100px auto 20px;
     width: 1200px;
     gap: 20px;
 }
 .carte-indicateur{
-    border: solid 2px var(--lime);
 }
 
 /*............Projection section........*/
