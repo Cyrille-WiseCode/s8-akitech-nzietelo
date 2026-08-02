@@ -41,7 +41,7 @@ body{
     margin:20px auto;
 
     .top3conducteurs{
-        width: 48%;
+        width: 46%;
         padding: 10px;
         background-color: var(--blanc);
         border-radius: 12px;
@@ -58,6 +58,20 @@ body{
                 margin: 4px 0;
                 border-bottom: 1px solid rgba(128, 128, 128, 0.47);
             }
+        }
+    }
+
+    .trajetVedette{
+        width: 46%;
+        background-color: var(--blanc);
+        border-radius: 12px;
+        padding: 10px;
+
+        .trajetvedette{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
     }
 }
