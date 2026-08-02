@@ -71,6 +71,18 @@ function filtrerParQuartierDepart(trajets, quartier) {
      * Si quartier est vide ou null, retourne tous les trajets.
      */
     // TODO
+    let trajet_liste = [];
+
+    if(quartier === null || quartier === ""){
+        return trajets
+    }else{
+        for(let el of trajets){
+            if(el["quartier_depart"]=== quartier){
+                trajet_liste.push(el);
+            } 
+        }
+        return trajet_liste;
+    }
 }
 
 function rechercherParMotCle(trajets, motCle) {
@@ -83,7 +95,23 @@ function rechercherParMotCle(trajets, motCle) {
      * Si motCle est vide, retourne tous les trajets.
      */
     // TODO
+    let trajet_liste =[];
+    if(motCle === null || motCle === ""){
+        return trajets;
+    }else{
+        let mini_mot = motCle.toLowerCase();
+        for(el of trajets){
+            let depart = el["quartier_depart"].toLowerCase();
+            let arrivee = el["quartier_arrivee"].toLowerCase();
+            let comment = el["commentaire"].toLowerCase();
+            if( depart.includes(mini_mot) || arrivee.includes(mini_mot) || comment.includes(mini_mot) ) {
+                trajet_liste.push(el);
+            }
+        }
+        return trajet_liste;
+    }
 }
+
 
 // ============================================================================
 // Dev FS3 — page Détail trajet(Jude Koy)
