@@ -26,7 +26,14 @@ function compterTrajetsAujourdhui(trajets, dateAujourdhui) {
      * @return {number} - nombre de trajets à cette date
      * Exemple : compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"}], "2026-07-27") → 1
      */
-    // TODO
+    let number=0;
+    for(let el of trajets){
+        if(el.date === dateAujourdhui){
+            number++;
+        }
+    }
+    return number;
+
 }
 
 function formaterQuartierPrincipal(compteParQuartier) {
@@ -36,7 +43,19 @@ function formaterQuartierPrincipal(compteParQuartier) {
      * @return {string} - ex: "Poto-Poto (8 trajets)"
      * Si l'objet est vide, retourne "Aucun trajet".
      */
-    // TODO
+    let maxEl = null;
+    let maxtrajet= 0;
+    if(Object.keys(compteParQuartier).length === 0){
+        return "Aucun trajet";
+    }else{
+        for(let el in compteParQuartier){
+            if(compteParQuartier[el] > maxtrajet){
+                maxEl = el;
+                maxtrajet = compteParQuartier[el];
+            }
+        }
+        return `${ maxEl} (${maxtrajet } trajets)`
+    }
 }
 
 // ============================================================================
