@@ -1,6 +1,9 @@
 body{
     background-color: var(--beige);
-    padding: 30px;
+}
+
+main{
+   padding: 30px;
 }
 
 .grille-indicateurs{
