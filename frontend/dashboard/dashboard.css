@@ -1,5 +1,8 @@
 body{
     background-color: var(--beige);
+}
+
+main{
     padding: 30px;
 }
 
