@@ -26,9 +26,9 @@ function compterTrajetsAujourdhui(trajets, dateAujourdhui) {
      * @return {number} - nombre de trajets à cette date
      * Exemple : compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"}], "2026-07-27") → 1
      */
-    let number=0;
-    for(let el of trajets){
-        if(el.date === dateAujourdhui){
+    let number = 0;
+    for (let el of trajets) {
+        if (el.date === dateAujourdhui) {
             number++;
         }
     }
@@ -44,17 +44,17 @@ function formaterQuartierPrincipal(compteParQuartier) {
      * Si l'objet est vide, retourne "Aucun trajet".
      */
     let maxEl = null;
-    let maxtrajet= 0;
-    if(Object.keys(compteParQuartier).length === 0){
+    let maxtrajet = 0;
+    if (Object.keys(compteParQuartier).length === 0) {
         return "Aucun trajet";
-    }else{
-        for(let el in compteParQuartier){
-            if(compteParQuartier[el] > maxtrajet){
+    } else {
+        for (let el in compteParQuartier) {
+            if (compteParQuartier[el] > maxtrajet) {
                 maxEl = el;
                 maxtrajet = compteParQuartier[el];
             }
         }
-        return `${ maxEl} (${maxtrajet } trajets)`
+        return `${maxEl} (${maxtrajet} trajets)`
     }
 }
 
@@ -150,7 +150,8 @@ function filtrerReservationsParStatut(reservations, statut) {
      * @param {string} statut - "effectue", "en_attente", "annule" ou "" pour toutes
      * @return {Array} - réservations correspondantes
      */
-    // TODO
+    if (!statut) return reservations;
+    return reservations.filter(r => r.statut === statut);
 }
 
 function calculerTotalDepenseParPassager(reservations) {
@@ -163,7 +164,9 @@ function calculerTotalDepenseParPassager(reservations) {
      *   3 réservations : 500 (effectue), 700 (en_attente), 400 (annule)
      *   → 1200
      */
-    // TODO
+    return reservations
+        .filter(r => r.statut !== "annule")
+        .reduce((total, r) => total + r.trajet.prix_place, 0);
 }
 
 // ============================================================================
