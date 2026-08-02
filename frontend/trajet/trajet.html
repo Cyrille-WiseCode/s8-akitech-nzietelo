@@ -11,25 +11,20 @@
     <link rel="stylesheet" href="trajet.css" />
   </head>
   <body id="page-trajet">
-    <nav class="navbar">
-      <a href="../accueil/index.html" class="logo texte_h3">Nzietelo</a>
-
-      <button id="burger-btn" class="burger-btn" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div id="nav-links" class="nav-links">
-        <a href="../accueil/index.html">Accueil</a>
-        <a href="../recherche/recherche.html">Recherche</a>
-        <a href="../proposer/proposer.html">Proposer un trajet</a>
-        <a href="../mes-trajets/mes-trajets.html">Mes trajets</a>
-        <a href="../dashboard/dashboard.html">Tableau de bord</a>
-
-        <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-        <div id="nav-session"></div>
+    <nav class="accueil_navbar">
+      <div>
+        <span><img src="" alt="" /></span>
+        <span>Nzietelo</span>
       </div>
+      <ul>
+        <li><a href="../accueil/index.html">Accueil</a></li>
+        <li><a href="../recherche/recherche.html">Recherche</a></li>
+        <li><a href="../proposer/proposer.html">Proposer un trajet</a></li>
+        <li><a href="../mes-trajets/mes-trajets.html">Mes trajets</a></li>
+        <li><a href="../dashboard/dashboard.html">Tableau de bord</a></li>
+      </ul>
+      <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+      <div id="nav-session"></div>
     </nav>
 
     <main>
@@ -264,6 +259,19 @@
     </main>
 
     <div id="erreur-globale" hidden></div>
+
+    <footer>
+      <ul>
+        <li><a href="../accueil/index.html">Accueil</a></li>
+        <li><a href="../recherche/recherche.html">Recherche</a></li>
+        <li><a href="../proposer/proposer.html">Proposer un trajet</a></li>
+        <li><a href="../mes-trajets/mes-trajets.html">Mes trajets</a></li>
+        <li><a href="../dashboard/dashboard.html">Tableau de bord</a></li>
+      </ul>
+      <p>
+        &copy; Tous droits réservés -<span class="proj_titre">Nzietelo</span>
+      </p>
+    </footer>
 
     <script src="../functions.js"></script>
     <script src="../main.js"></script>
