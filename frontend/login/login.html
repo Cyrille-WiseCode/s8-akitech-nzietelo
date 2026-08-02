@@ -1,49 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BraCovoit — Connexion</title>
-  <link rel="stylesheet" href="login.css">
-</head>
-<body id="page-login">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nzietelo — Connexion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body id="page-login">
+    <!-- NAVIGATION — TODO (Dev FS7)
+       NE PAS SUPPRIMER l'id nav-session car main.js y injecte l'état de connexion -->
+    <div id="nav-session"></div>
 
-  <!-- NAVIGATION — TODO (Dev FS7) -->
+    <main>
+      <!-- Colonne gauche : illustration / slogan -->
+      <section class="section-gauche">
+        <img
+          src="../images/conducteur.jpg"
+          alt="Conducteur covoiturage page connexion"
+        />
+        <h1>Nzietelo</h1>
+        <p>Bienvenue, connectez-vous pour continuer votre voyage.</p>
+      </section>
 
-  <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+      <!-- Colonne droite : formulaire -->
+      <section class="section-droite">
+        <!-- FORMULAIRE — TODO (Dev FS7)
+           Respecter les IDs utilisés par main.js -->
+        <form id="form-login">
+          <h2 class="texte_h1" >Connexion</h2>
+          <label for="l-telephone">Téléphone</label>
+          <input type="tel" id="l-telephone" placeholder="066123456" />
 
-  <main>
-    <!-- =====================================================================
-         FORMULAIRE — TODO (Dev FS7)
-         Mettre en forme le formulaire de connexion : téléphone, mot de
-         passe. Prévoir un layout clair en colonne, avec des labels
-         visibles pour chaque champ.
+          <label for="l-mot-de-passe">Mot de passe</label>
+          <input type="password" id="l-mot-de-passe" />
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
-         ===================================================================== -->
-    <form id="form-login">
-      <label for="l-telephone">Téléphone</label>
-      <input type="tel" id="l-telephone" placeholder="066123456">
+          <button type="submit">Se connecter</button>
+          <a href="../inscription/inscription.html"
+          >Pas encore de compte ? S’inscrire</a
+        >
+        </form>
 
-      <label for="l-mot-de-passe">Mot de passe</label>
-      <input type="password" id="l-mot-de-passe">
+        <!-- Zone d’erreurs de validation — TODO (Dev FS7) -->
+        <div id="erreurs-form" hidden></div>
 
-      <button type="submit">Se connecter</button>
-    </form>
+        <!-- LIEN VERS INSCRIPTION — TODO (Dev FS7) -->
+        
+      </section>
+    </main>
 
-    <!-- Zone d'erreurs de validation — TODO (Dev FS7) : mettre en forme la
-         liste <ul><li> injectée par main.js en cas de formulaire invalide.
-         NE PAS MODIFIER l'id. -->
-    <div id="erreurs-form" hidden></div>
+    <!-- Zone d’erreur globale — TODO (Dev FS7) -->
+    <div id="erreur-globale" hidden></div>
 
-    <!-- LIEN VERS INSCRIPTION — TODO (Dev FS7) : lien "Pas encore de compte ?
-         S'inscrire" pointant vers ../inscription/inscription.html -->
-  </main>
-
-  <div id="erreur-globale" hidden></div>
-
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>
