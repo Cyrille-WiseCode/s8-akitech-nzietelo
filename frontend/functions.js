@@ -26,14 +26,14 @@ function compterTrajetsAujourdhui(trajets, dateAujourdhui) {
      * @return {number} - nombre de trajets à cette date
      * Exemple : compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"}], "2026-07-27") → 1
      */
-    let number=0;
-    for(let el of trajets){
-        if(el.date === dateAujourdhui){
+    let number = 0;
+    for (let el of trajets) {
+        if (el.date === dateAujourdhui) {
             number++;
         }
     }
-    return number;
-
+  }
+  return number;
 }
 
 function formaterQuartierPrincipal(compteParQuartier) {
@@ -44,18 +44,20 @@ function formaterQuartierPrincipal(compteParQuartier) {
      * Si l'objet est vide, retourne "Aucun trajet".
      */
     let maxEl = null;
-    let maxtrajet= 0;
-    if(Object.keys(compteParQuartier).length === 0){
+    let maxtrajet = 0;
+    if (Object.keys(compteParQuartier).length === 0) {
         return "Aucun trajet";
-    }else{
-        for(let el in compteParQuartier){
-            if(compteParQuartier[el] > maxtrajet){
+    } else {
+        for (let el in compteParQuartier) {
+            if (compteParQuartier[el] > maxtrajet) {
                 maxEl = el;
                 maxtrajet = compteParQuartier[el];
             }
         }
-        return `${ maxEl} (${maxtrajet } trajets)`
+        return `${maxEl} (${maxtrajet} trajets)`
     }
+    return `${maxEl} (${maxtrajet} trajets)`;
+  }
 }
 
 // ============================================================================
@@ -71,6 +73,18 @@ function filtrerParQuartierDepart(trajets, quartier) {
      * Si quartier est vide ou null, retourne tous les trajets.
      */
     // TODO
+    let trajet_liste = [];
+
+    if(quartier === null || quartier === ""){
+        return trajets
+    }else{
+        for(let el of trajets){
+            if(el["quartier_depart"]=== quartier){
+                trajet_liste.push(el);
+            } 
+        }
+        return trajet_liste;
+    }
 }
 
 function rechercherParMotCle(trajets, motCle) {
@@ -83,29 +97,45 @@ function rechercherParMotCle(trajets, motCle) {
      * Si motCle est vide, retourne tous les trajets.
      */
     // TODO
+    let trajet_liste =[];
+    if(motCle === null || motCle === ""){
+        return trajets;
+    }else{
+        let mini_mot = motCle.toLowerCase();
+        for(el of trajets){
+            let depart = el["quartier_depart"].toLowerCase();
+            let arrivee = el["quartier_arrivee"].toLowerCase();
+            let comment = el["commentaire"].toLowerCase();
+            if( depart.includes(mini_mot) || arrivee.includes(mini_mot) || comment.includes(mini_mot) ) {
+                trajet_liste.push(el);
+            }
+        }
+        return trajet_liste;
+    }
 }
+
 
 // ============================================================================
 // Dev FS3 — page Détail trajet(Jude Koy)
 // ============================================================================
 
 function formaterPrix(prix) {
-    /**
-     * Formate un prix en FCFA avec séparateur de milliers.
-     * @param {number} prix - prix en FCFA (ex: 5000)
-     * @return {string} - "5 000 FCFA"
-     * Exemple : formaterPrix(500) → "500 FCFA", formaterPrix(1500) → "1 500 FCFA"
-     */
-    return prix.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " FCFA";
+  /**
+   * Formate un prix en FCFA avec séparateur de milliers.
+   * @param {number} prix - prix en FCFA (ex: 5000)
+   * @return {string} - "5 000 FCFA"
+   * Exemple : formaterPrix(500) → "500 FCFA", formaterPrix(1500) → "1 500 FCFA"
+   */
+  return prix.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " FCFA";
 }
 
 function formaterHeure(heure) {
-    /**
-     * Formate une heure au format "HHhMM" à partir d'une heure "HH:MM".
-     * @param {string} heure - format "HH:MM" (ex: "07:30")
-     * @return {string} - "07h30"
-     */
-    return heure.replace(":", "h");
+  /**
+   * Formate une heure au format "HHhMM" à partir d'une heure "HH:MM".
+   * @param {string} heure - format "HH:MM" (ex: "07:30")
+   * @return {string} - "07h30"
+   */
+  return heure.replace(":", "h");
 }
 
 // ============================================================================
@@ -113,30 +143,35 @@ function formaterHeure(heure) {
 // ============================================================================
 
 function validerFormulaireProposer(formulaire) {
-    /**
-     * Valide le formulaire de proposition de trajet.
-     * @param {Object} formulaire - avec les clés : quartier_depart,
-     *   quartier_arrivee, heure, places_dispo, prix_place
-     * @return {Object} - {valide: true/false, erreurs: [liste de messages]}
-     *
-     * Règles :
-     * - quartier_depart et quartier_arrivee obligatoires et différents
-     * - heure obligatoire au format "HH:MM"
-     * - places_dispo entre 1 et 8
-     * - prix_place > 0
-     */
-    // TODO
+  /**
+   * Valide le formulaire de proposition de trajet.
+   * @param {Object} formulaire - avec les clés : quartier_depart,
+   *   quartier_arrivee, heure, places_dispo, prix_place
+   * @return {Object} - {valide: true/false, erreurs: [liste de messages]}
+   *
+   * Règles :
+   * - quartier_depart et quartier_arrivee obligatoires et différents
+   * - heure obligatoire au format "HH:MM"
+   * - places_dispo entre 1 et 8
+   * - prix_place > 0
+   */
+  // TODO
 }
 
-function formaterMessageConfirmation(nom, quartierDepart, quartierArrivee, heure) {
-    /**
-     * Génère le message de confirmation après réservation.
-     * @return {string} - message formaté
-     * Exemple :
-     *   formaterMessageConfirmation("Marie", "Bacongo", "Poto-Poto", "07:30")
-     *   → "Bonjour Marie, votre réservation pour Bacongo → Poto-Poto à 07:30 a été enregistrée."
-     */
-    // TODO
+function formaterMessageConfirmation(
+  nom,
+  quartierDepart,
+  quartierArrivee,
+  heure,
+) {
+  /**
+   * Génère le message de confirmation après réservation.
+   * @return {string} - message formaté
+   * Exemple :
+   *   formaterMessageConfirmation("Marie", "Bacongo", "Poto-Poto", "07:30")
+   *   → "Bonjour Marie, votre réservation pour Bacongo → Poto-Poto à 07:30 a été enregistrée."
+   */
+  // TODO
 }
 
 // ============================================================================
@@ -150,7 +185,8 @@ function filtrerReservationsParStatut(reservations, statut) {
      * @param {string} statut - "effectue", "en_attente", "annule" ou "" pour toutes
      * @return {Array} - réservations correspondantes
      */
-    // TODO
+    if (!statut) return reservations;
+    return reservations.filter(r => r.statut === statut);
 }
 
 function calculerTotalDepenseParPassager(reservations) {
@@ -163,7 +199,9 @@ function calculerTotalDepenseParPassager(reservations) {
      *   3 réservations : 500 (effectue), 700 (en_attente), 400 (annule)
      *   → 1200
      */
-    // TODO
+    return reservations
+        .filter(r => r.statut !== "annule")
+        .reduce((total, r) => total + r.trajet.prix_place, 0);
 }
 
 // ============================================================================
@@ -213,45 +251,96 @@ function getBadgeDisponibilite(placesRestantes) {
 // ============================================================================
 // Dev FS7 — pages Inscription + Login
 // ============================================================================
-
 function validerFormulaireInscription(formulaire) {
-    /**
-     * Valide le formulaire d'inscription.
-     * @param {Object} formulaire - avec les clés : nom, telephone, mot_de_passe
-     * @return {Object} - {valide: true/false, erreurs: [liste de messages]}
-     *
-     * Règles :
-     * - nom obligatoire (non vide après trim)
-     * - telephone obligatoire, au moins 9 chiffres
-     * - mot_de_passe obligatoire, au moins 4 caractères
-     */
-    // TODO
+  /**
+   * Valide le formulaire d'inscription.
+   * @param {Object} formulaire - avec les clés : nom, telephone, mot_de_passe
+   * @return {Object} - {valide: true/false, erreurs: [liste de messages]}
+   *
+   * Règles :
+   * - nom obligatoire (non vide après trim)
+   * - telephone obligatoire, au moins 9 chiffres
+   * - mot_de_passe obligatoire, au moins 4 caractères
+   */
+
+  const erreurs = [];
+
+  // Vérification du nom
+  if (!formulaire.nom || formulaire.nom.trim() === "") {
+    erreurs.push("Le nom est obligatoire.");
+  }
+
+  // Vérification du téléphone
+  if (!formulaire.telephone || formulaire.telephone.trim() === "") {
+    erreurs.push("Le téléphone est obligatoire.");
+  } else {
+    // On garde uniquement les chiffres pour vérifier la longueur
+    const chiffres = formulaire.telephone.replace(/\D/g, "");
+    if (chiffres.length < 9) {
+      erreurs.push("Le téléphone doit contenir au moins 9 chiffres.");
+    }
+  }
+
+  // Vérification du mot de passe
+  if (!formulaire.mot_de_passe || formulaire.mot_de_passe.trim() === "") {
+    erreurs.push("Le mot de passe est obligatoire.");
+  } else if (formulaire.mot_de_passe.length < 4) {
+    erreurs.push("Le mot de passe doit contenir au moins 4 caractères.");
+  }
+
+  return {
+    valide: erreurs.length === 0,
+    erreurs: erreurs,
+  };
 }
 
 function validerFormulaireLogin(formulaire) {
-    /**
-     * Valide le formulaire de connexion.
-     * @param {Object} formulaire - avec les clés : telephone, mot_de_passe
-     * @return {Object} - {valide: true/false, erreurs: [liste de messages]}
-     *
-     * Règles :
-     * - telephone obligatoire
-     * - mot_de_passe obligatoire
-     */
-    // TODO
+  /**
+   * Valide le formulaire de connexion.
+   * @param {Object} formulaire - avec les clés : telephone, mot_de_passe
+   * @return {Object} - {valide: true/false, erreurs: [liste de messages]}
+   *
+   * Règles :
+   * - telephone obligatoire
+   * - mot_de_passe obligatoire
+   */
+
+  const erreurs = [];
+
+  // Vérification du téléphone
+  if (!formulaire.telephone || formulaire.telephone.trim() === "") {
+    erreurs.push("Le téléphone est obligatoire.");
+  }
+
+  // Vérification du mot de passe
+  if (!formulaire.mot_de_passe || formulaire.mot_de_passe.trim() === "") {
+    erreurs.push("Le mot de passe est obligatoire.");
+  }
+
+  return {
+    valide: erreurs.length === 0,
+    erreurs: erreurs,
+  };
 }
 
 // ============================================================================
 // NE PAS MODIFIER : export pour les tests
 // ============================================================================
 if (typeof module !== "undefined" && module.exports) {
-    module.exports = {
-        compterTrajetsAujourdhui, formaterQuartierPrincipal,
-        filtrerParQuartierDepart, rechercherParMotCle,
-        formaterPrix, formaterHeure,
-        validerFormulaireProposer, formaterMessageConfirmation,
-        filtrerReservationsParStatut, calculerTotalDepenseParPassager,
-        calculerPourcentageOccupation, getBadgeDisponibilite,
-        validerFormulaireInscription, validerFormulaireLogin,
-    };
+  module.exports = {
+    compterTrajetsAujourdhui,
+    formaterQuartierPrincipal,
+    filtrerParQuartierDepart,
+    rechercherParMotCle,
+    formaterPrix,
+    formaterHeure,
+    validerFormulaireProposer,
+    formaterMessageConfirmation,
+    filtrerReservationsParStatut,
+    calculerTotalDepenseParPassager,
+    calculerPourcentageOccupation,
+    getBadgeDisponibilite,
+    validerFormulaireInscription,
+    validerFormulaireLogin,
+  };
 }

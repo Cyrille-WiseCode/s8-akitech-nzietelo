@@ -1,0 +1,148 @@
+@import url('../style.css');
+
+body {
+    background-color: var(--beige);
+}
+/*..........Recherche barre.......*/
+.recherche{
+    background-image: url('../images/proj_background.jpeg');
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-color: white;
+    padding: 30px 0px;
+    height: 200px;
+}
+.barre-filtres{
+    border: solid 1px rgba(0, 0, 0, 0.171);
+    width: 900px;
+    margin: 50px auto 0px;
+    display: grid;
+    grid-template-columns: 38% 48% 10%;
+    grid-template-rows: 1fr;
+    gap: 12px;
+    
+}
+.recherche_item1{
+    font-weight: 500;
+    border: none;
+    padding: 12px 10px;
+    border-radius: 18px;
+}
+.recherche_item1:focus{
+    outline: none;
+    border: solid 1px var(--lime);
+}
+
+.recherche_item2{
+    padding: 12px 10px;
+    border-radius: 18px;
+    border: solid 1px rgba(0, 0, 0, 0.139);
+}
+.recherche_item2:focus{
+    outline: none;
+    border: solid 1px var(--lime);
+}
+.recherche_item3{
+    border-radius: 18px;
+    padding: 12px 13px;
+    width: 100px;
+}
+/*.........Liste Resultat.......*/
+
+.result_liste{
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: 1200px;
+    gap: 20px;
+}
+.carte-trajet{
+    background-color: var(--blanc);
+    padding: 20px;
+    border-radius: 20px;
+}
+.carte-trajet h3{
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--noir);  
+}
+.carte-trajet span{
+    color: var(--gris);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.conducteur{
+    color: var(--gris);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.btn-voir{
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: var(--gris-fonce);
+    font-weight: 600;
+    margin-left: 50%;
+}
+.btn-voir:hover{
+    border-bottom: solid 1px var(--lime);
+    color: var(--lime);
+}
+.prix{
+    font-weight: 600;
+    font-size: 1rem;
+    border: solid 3px var(--lime);
+    background-color: var(--lime) ;
+    width: 100px;
+    border-radius: 15px;
+    padding-left: 8px;
+}
+.heure{
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+/*.........Acun trajet trouvé.......*/
+.aucun-resultat{
+    background-color: var(--blanc);
+    margin: auto;
+    height: 300px;
+    padding: 50px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    border: solid 2px var(--lime);
+}
+@media screen and (max-width: 1066px){
+    .recherche{
+        height: auto;
+    }
+    .barre-filtres{
+        grid-template-columns: 1fr  1fr;
+        grid-template-rows: 1fr;
+        width: auto;
+    }
+    .result_liste{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        width: auto;
+    }
+    .recherche_item3{
+        width: 100%;
+    }
+
+
+}
+@media screen and (max-width: 768px){
+    .recherche{
+        height: auto;
+    }
+    .barre-filtres{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: auto;
+    }
+    .result_liste{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        width: auto;
+    }
+}
