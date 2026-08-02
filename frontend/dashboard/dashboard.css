@@ -78,20 +78,31 @@ body{
 
 .tableauRepartition{
     margin-bottom: 20px;
-
+    .texte_h2{
+        margin-bottom: 8px;
+    }
     table{
         border-collapse: collapse;
-        min-width: 400px;
-        width: auto;
-        border: 1px solid black;
+        width:100%;
+        table-layout: auto;
+        border: 1px solid white;
 
         thead tr{
             background-color: var(--gris);
             color: var(--beige);
             text-align: left;
-            tbody{
-                border:1px solid #ddd;
+            th{
+                padding: 10px;
+                border: 1px solid white;
             }
+        }
+
+        tbody tr:nth-child(even){
+            background-color: white;
+        }
+        tbody tr td{
+            padding: 10px;
+            border: 1px solid white;
         }
     }
 }
