@@ -19,39 +19,42 @@
 // ============================================================================
 
 function compterTrajetsAujourdhui(trajets, dateAujourdhui) {
-  /**
-   * Compte le nombre de trajets prévus pour la date donnée.
-   * @param {Array} trajets - liste d'objets avec une clé "date" (ex: "2026-07-27")
-   * @param {string} dateAujourdhui - date au format "AAAA-MM-JJ"
-   * @return {number} - nombre de trajets à cette date
-   * Exemple : compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"}], "2026-07-27") → 1
-   */
-  let number = 0;
-  for (let el of trajets) {
-    if (el.date === dateAujourdhui) {
-      number++;
+    /**
+     * Compte le nombre de trajets prévus pour la date donnée.
+     * @param {Array} trajets - liste d'objets avec une clé "date" (ex: "2026-07-27")
+     * @param {string} dateAujourdhui - date au format "AAAA-MM-JJ"
+     * @return {number} - nombre de trajets à cette date
+     * Exemple : compterTrajetsAujourdhui([{date:"2026-07-27"},{date:"2026-07-28"}], "2026-07-27") → 1
+     */
+    let number = 0;
+    for (let el of trajets) {
+        if (el.date === dateAujourdhui) {
+            number++;
+        }
     }
   }
   return number;
 }
 
 function formaterQuartierPrincipal(compteParQuartier) {
-  /**
-   * Retourne le nom du quartier qui a le plus de trajets, sous forme lisible.
-   * @param {Object} compteParQuartier - ex: {"Bacongo": 5, "Moungali": 3, "Poto-Poto": 8}
-   * @return {string} - ex: "Poto-Poto (8 trajets)"
-   * Si l'objet est vide, retourne "Aucun trajet".
-   */
-  let maxEl = null;
-  let maxtrajet = 0;
-  if (Object.keys(compteParQuartier).length === 0) {
-    return "Aucun trajet";
-  } else {
-    for (let el in compteParQuartier) {
-      if (compteParQuartier[el] > maxtrajet) {
-        maxEl = el;
-        maxtrajet = compteParQuartier[el];
-      }
+    /**
+     * Retourne le nom du quartier qui a le plus de trajets, sous forme lisible.
+     * @param {Object} compteParQuartier - ex: {"Bacongo": 5, "Moungali": 3, "Poto-Poto": 8}
+     * @return {string} - ex: "Poto-Poto (8 trajets)"
+     * Si l'objet est vide, retourne "Aucun trajet".
+     */
+    let maxEl = null;
+    let maxtrajet = 0;
+    if (Object.keys(compteParQuartier).length === 0) {
+        return "Aucun trajet";
+    } else {
+        for (let el in compteParQuartier) {
+            if (compteParQuartier[el] > maxtrajet) {
+                maxEl = el;
+                maxtrajet = compteParQuartier[el];
+            }
+        }
+        return `${maxEl} (${maxtrajet} trajets)`
     }
     return `${maxEl} (${maxtrajet} trajets)`;
   }
@@ -62,27 +65,55 @@ function formaterQuartierPrincipal(compteParQuartier) {
 // ============================================================================
 
 function filtrerParQuartierDepart(trajets, quartier) {
-  /**
-   * Retourne les trajets partant du quartier donné.
-   * @param {Array} trajets - liste d'objets trajet avec "quartier_depart"
-   * @param {string} quartier - nom du quartier
-   * @return {Array} - trajets filtrés
-   * Si quartier est vide ou null, retourne tous les trajets.
-   */
-  // TODO
+    /**
+     * Retourne les trajets partant du quartier donné.
+     * @param {Array} trajets - liste d'objets trajet avec "quartier_depart"
+     * @param {string} quartier - nom du quartier
+     * @return {Array} - trajets filtrés
+     * Si quartier est vide ou null, retourne tous les trajets.
+     */
+    // TODO
+    let trajet_liste = [];
+
+    if(quartier === null || quartier === ""){
+        return trajets
+    }else{
+        for(let el of trajets){
+            if(el["quartier_depart"]=== quartier){
+                trajet_liste.push(el);
+            } 
+        }
+        return trajet_liste;
+    }
 }
 
 function rechercherParMotCle(trajets, motCle) {
-  /**
-   * Recherche les trajets dont le quartier_depart, quartier_arrivee ou
-   * commentaire contient le mot-clé (insensible à la casse).
-   * @param {Array} trajets - liste de trajets
-   * @param {string} motCle - mot recherché
-   * @return {Array} - trajets correspondants
-   * Si motCle est vide, retourne tous les trajets.
-   */
-  // TODO
+    /**
+     * Recherche les trajets dont le quartier_depart, quartier_arrivee ou
+     * commentaire contient le mot-clé (insensible à la casse).
+     * @param {Array} trajets - liste de trajets
+     * @param {string} motCle - mot recherché
+     * @return {Array} - trajets correspondants
+     * Si motCle est vide, retourne tous les trajets.
+     */
+    // TODO
+    let trajet_liste =[];
+    if(motCle === null || motCle === ""){
+        return trajets;
+    }else{
+        let mini_mot = motCle.toLowerCase();
+        for(el of trajets){
+            let depart = el["quartier_depart"].toLowerCase();
+            let arrivee = el["quartier_arrivee"].toLowerCase();
+            let comment = el["commentaire"].toLowerCase();
+            if( depart.includes(mini_mot) || arrivee.includes(mini_mot) || comment.includes(mini_mot) ) {
+                trajet_liste.push(el);
+            }
+        }
+        return trajet_liste;
+    }
 }
+
 
 // ============================================================================
 // Dev FS3 — page Détail trajet(Jude Koy)
@@ -148,26 +179,29 @@ function formaterMessageConfirmation(
 // ============================================================================
 
 function filtrerReservationsParStatut(reservations, statut) {
-  /**
-   * Filtre les réservations par statut.
-   * @param {Array} reservations - liste de réservations
-   * @param {string} statut - "effectue", "en_attente", "annule" ou "" pour toutes
-   * @return {Array} - réservations correspondantes
-   */
-  // TODO
+    /**
+     * Filtre les réservations par statut.
+     * @param {Array} reservations - liste de réservations
+     * @param {string} statut - "effectue", "en_attente", "annule" ou "" pour toutes
+     * @return {Array} - réservations correspondantes
+     */
+    if (!statut) return reservations;
+    return reservations.filter(r => r.statut === statut);
 }
 
 function calculerTotalDepenseParPassager(reservations) {
-  /**
-   * Calcule le total dépensé par un passager sur ses réservations non annulées.
-   * @param {Array} reservations - chaque réservation a une clé "trajet"
-   *   qui contient {prix_place: number} et une clé "statut"
-   * @return {number} - somme des prix_place des réservations non "annule"
-   * Exemple :
-   *   3 réservations : 500 (effectue), 700 (en_attente), 400 (annule)
-   *   → 1200
-   */
-  // TODO
+    /**
+     * Calcule le total dépensé par un passager sur ses réservations non annulées.
+     * @param {Array} reservations - chaque réservation a une clé "trajet"
+     *   qui contient {prix_place: number} et une clé "statut"
+     * @return {number} - somme des prix_place des réservations non "annule"
+     * Exemple :
+     *   3 réservations : 500 (effectue), 700 (en_attente), 400 (annule)
+     *   → 1200
+     */
+    return reservations
+        .filter(r => r.statut !== "annule")
+        .reduce((total, r) => total + r.trajet.prix_place, 0);
 }
 
 // ============================================================================
@@ -175,29 +209,43 @@ function calculerTotalDepenseParPassager(reservations) {
 // ============================================================================
 
 function calculerPourcentageOccupation(placesOccupees, placesTotales) {
-  /**
-   * Calcule le pourcentage d'occupation d'un trajet.
-   * @param {number} placesOccupees - places réservées
-   * @param {number} placesTotales - places totales du trajet
-   * @return {number} - pourcentage arrondi (0 à 100)
-   * Exemple : 2 places sur 4 → 50
-   * Si placesTotales est 0, retourne 0.
-   */
-  // TODO
+    /**
+     * Calcule le pourcentage d'occupation d'un trajet.
+     * @param {number} placesOccupees - places réservées
+     * @param {number} placesTotales - places totales du trajet
+     * @return {number} - pourcentage arrondi (0 à 100)
+     * Exemple : 2 places sur 4 → 50
+     * Si placesTotales est 0, retourne 0.
+     */
+    // TODO
+    if(placesTotales===0){
+        return 0;
+    }
+    const pourcentage=(placesOccupees/placesTotales)*100;
+    return Math.round(pourcentage);
 }
 
 function getBadgeDisponibilite(placesRestantes) {
-  /**
-   * Retourne le libellé et la classe CSS d'un badge de disponibilité.
-   * @param {number} placesRestantes - nombre de places restantes
-   * @return {Object} - {libelle: string, classe: string}
-   *
-   * Règles :
-   * - 0 place  → {libelle: "Complet", classe: "badge-complet"}
-   * - 1 place  → {libelle: "1 place", classe: "badge-limite"}
-   * - 2+ places → {libelle: "N places", classe: "badge-dispo"}  (N = placesRestantes)
-   */
-  // TODO
+    /**
+     * Retourne le libellé et la classe CSS d'un badge de disponibilité.
+     * @param {number} placesRestantes - nombre de places restantes
+     * @return {Object} - {libelle: string, classe: string}
+     *
+     * Règles :
+     * - 0 place  → {libelle: "Complet", classe: "badge-complet"}
+     * - 1 place  → {libelle: "1 place", classe: "badge-limite"}
+     * - 2+ places → {libelle: "N places", classe: "badge-dispo"}  (N = placesRestantes)
+     */
+    // TODO
+    if(placesRestantes===0){
+        return {libelle:"Complet", classe:"badge-complet"};
+    }
+    else if(placesRestantes===1){
+        return {libelle:"1 place", classe:"badge-limite"};
+    }
+    else{
+        return {libelle:`${placesRestantes} places`, classe:"badge-dispo"}
+    }
 }
 
 // ============================================================================
