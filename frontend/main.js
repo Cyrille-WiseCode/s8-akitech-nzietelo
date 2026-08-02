@@ -46,7 +46,7 @@ function initNavSession() {
             window.location.reload();
         });
     } else {
-        el.innerHTML = `<a href="../login/login.html">Se connecter</a> <a href="../inscription/inscription.html">S'inscrire</a>`;
+        el.innerHTML = `<button class="btn_transparant"><a href="../login/login.html">Se connecter</a></button> <button class="btn_principal"><a href="../inscription/inscription.html">S'inscrire</a></button>`;
     }
 }
 
