@@ -32,8 +32,7 @@ function compterTrajetsAujourdhui(trajets, dateAujourdhui) {
             number++;
         }
     }
-  }
-  return number;
+    return number;
 }
 
 function formaterQuartierPrincipal(compteParQuartier) {
@@ -57,8 +56,8 @@ function formaterQuartierPrincipal(compteParQuartier) {
         return `${maxEl} (${maxtrajet} trajets)`
     }
     return `${maxEl} (${maxtrajet} trajets)`;
-  }
 }
+
 
 // ============================================================================
 // Dev FS2 — page Recherche
@@ -120,22 +119,22 @@ function rechercherParMotCle(trajets, motCle) {
 // ============================================================================
 
 function formaterPrix(prix) {
-  /**
+/**
    * Formate un prix en FCFA avec séparateur de milliers.
    * @param {number} prix - prix en FCFA (ex: 5000)
    * @return {string} - "5 000 FCFA"
    * Exemple : formaterPrix(500) → "500 FCFA", formaterPrix(1500) → "1 500 FCFA"
    */
-  return prix.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " FCFA";
+    return prix.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " FCFA";
 }
 
 function formaterHeure(heure) {
-  /**
+/**
    * Formate une heure au format "HHhMM" à partir d'une heure "HH:MM".
    * @param {string} heure - format "HH:MM" (ex: "07:30")
    * @return {string} - "07h30"
    */
-  return heure.replace(":", "h");
+    return heure.replace(":", "h");
 }
 
 // ============================================================================
@@ -158,13 +157,8 @@ function validerFormulaireProposer(formulaire) {
   // TODO
 }
 
-function formaterMessageConfirmation(
-  nom,
-  quartierDepart,
-  quartierArrivee,
-  heure,
-) {
-  /**
+function formaterMessageConfirmation(nom,quartierDepart,quartierArrivee,heure,) {
+/**
    * Génère le message de confirmation après réservation.
    * @return {string} - message formaté
    * Exemple :
@@ -252,7 +246,7 @@ function getBadgeDisponibilite(placesRestantes) {
 // Dev FS7 — pages Inscription + Login
 // ============================================================================
 function validerFormulaireInscription(formulaire) {
-  /**
+/**
    * Valide le formulaire d'inscription.
    * @param {Object} formulaire - avec les clés : nom, telephone, mot_de_passe
    * @return {Object} - {valide: true/false, erreurs: [liste de messages]}
@@ -263,35 +257,35 @@ function validerFormulaireInscription(formulaire) {
    * - mot_de_passe obligatoire, au moins 4 caractères
    */
 
-  const erreurs = [];
+    const erreurs = [];
 
-  // Vérification du nom
-  if (!formulaire.nom || formulaire.nom.trim() === "") {
-    erreurs.push("Le nom est obligatoire.");
-  }
-
-  // Vérification du téléphone
-  if (!formulaire.telephone || formulaire.telephone.trim() === "") {
-    erreurs.push("Le téléphone est obligatoire.");
-  } else {
-    // On garde uniquement les chiffres pour vérifier la longueur
-    const chiffres = formulaire.telephone.replace(/\D/g, "");
-    if (chiffres.length < 9) {
-      erreurs.push("Le téléphone doit contenir au moins 9 chiffres.");
+    // Vérification du nom
+    if (!formulaire.nom || formulaire.nom.trim() === "") {
+        erreurs.push("Le nom est obligatoire.");
     }
-  }
 
-  // Vérification du mot de passe
-  if (!formulaire.mot_de_passe || formulaire.mot_de_passe.trim() === "") {
-    erreurs.push("Le mot de passe est obligatoire.");
-  } else if (formulaire.mot_de_passe.length < 4) {
-    erreurs.push("Le mot de passe doit contenir au moins 4 caractères.");
-  }
+    // Vérification du téléphone
+    if (!formulaire.telephone || formulaire.telephone.trim() === "") {
+        erreurs.push("Le téléphone est obligatoire.");
+    } else {
+        // On garde uniquement les chiffres pour vérifier la longueur
+        const chiffres = formulaire.telephone.replace(/\D/g, "");
+        if (chiffres.length < 9) {
+        erreurs.push("Le téléphone doit contenir au moins 9 chiffres.");
+        }
+    }
 
-  return {
-    valide: erreurs.length === 0,
-    erreurs: erreurs,
-  };
+    // Vérification du mot de passe
+    if (!formulaire.mot_de_passe || formulaire.mot_de_passe.trim() === "") {
+        erreurs.push("Le mot de passe est obligatoire.");
+    } else if (formulaire.mot_de_passe.length < 4) {
+        erreurs.push("Le mot de passe doit contenir au moins 4 caractères.");
+    }
+
+    return {
+        valide: erreurs.length === 0,
+        erreurs: erreurs,
+    };
 }
 
 function validerFormulaireLogin(formulaire) {
@@ -305,42 +299,42 @@ function validerFormulaireLogin(formulaire) {
    * - mot_de_passe obligatoire
    */
 
-  const erreurs = [];
+    const erreurs = [];
 
-  // Vérification du téléphone
-  if (!formulaire.telephone || formulaire.telephone.trim() === "") {
-    erreurs.push("Le téléphone est obligatoire.");
-  }
+    // Vérification du téléphone
+    if (!formulaire.telephone || formulaire.telephone.trim() === "") {
+        erreurs.push("Le téléphone est obligatoire.");
+    }
 
-  // Vérification du mot de passe
-  if (!formulaire.mot_de_passe || formulaire.mot_de_passe.trim() === "") {
-    erreurs.push("Le mot de passe est obligatoire.");
-  }
+    // Vérification du mot de passe
+    if (!formulaire.mot_de_passe || formulaire.mot_de_passe.trim() === "") {
+        erreurs.push("Le mot de passe est obligatoire.");
+    }
 
-  return {
-    valide: erreurs.length === 0,
-    erreurs: erreurs,
-  };
+    return {
+        valide: erreurs.length === 0,
+        erreurs: erreurs,
+    };
 }
 
 // ============================================================================
 // NE PAS MODIFIER : export pour les tests
 // ============================================================================
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = {
-    compterTrajetsAujourdhui,
-    formaterQuartierPrincipal,
-    filtrerParQuartierDepart,
-    rechercherParMotCle,
-    formaterPrix,
-    formaterHeure,
-    validerFormulaireProposer,
-    formaterMessageConfirmation,
-    filtrerReservationsParStatut,
-    calculerTotalDepenseParPassager,
-    calculerPourcentageOccupation,
-    getBadgeDisponibilite,
-    validerFormulaireInscription,
-    validerFormulaireLogin,
-  };
+    module.exports = {
+        compterTrajetsAujourdhui,
+        formaterQuartierPrincipal,
+        filtrerParQuartierDepart,
+        rechercherParMotCle,
+        formaterPrix,
+        formaterHeure,
+        validerFormulaireProposer,
+        formaterMessageConfirmation,
+        filtrerReservationsParStatut,
+        calculerTotalDepenseParPassager,
+        calculerPourcentageOccupation,
+        getBadgeDisponibilite,
+        validerFormulaireInscription,
+        validerFormulaireLogin,
+    };
 }
