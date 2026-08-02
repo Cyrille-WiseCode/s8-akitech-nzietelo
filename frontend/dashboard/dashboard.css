@@ -32,12 +32,34 @@ body{
     }
 }
 
-.top3conducteurs{
-    margin: 20px 0;
-}
+.contraj{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 20px;
+    margin:20px auto;
 
-.trajetVedette{
-    margin-bottom: 20px;
+    .top3conducteurs{
+        width: 48%;
+        padding: 10px;
+        background-color: var(--blanc);
+        border-radius: 12px;
+        
+        .texte_h2{
+            border-bottom: 1px solid rgba(128, 128, 128, 0.47);
+        }
+
+        ol{
+            list-style-type: none;
+            padding-left:20px;
+            margin: 4px 0;
+            li{
+                margin: 4px 0;
+                border-bottom: 1px solid rgba(128, 128, 128, 0.47);
+            }
+        }
+    }
 }
 
 .tableauRepartition{
