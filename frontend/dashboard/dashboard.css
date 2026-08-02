@@ -10,12 +10,25 @@ body{
     gap: 20px;
 
     .carte-indicateur{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        
         background-color: var(--blanc);
-        border-radius: 20px;
-        padding: 20px;
+        border-radius: 12px;
+        padding: 10px;
+
+        img{
+            width:25px;
+            height: 25px;
+            padding: 5px;
+            border-radius: 6px;
+            background-color: var(--lime);
+        }
+
+        .valeur{
+            font-weight: 500;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--noir);
+        }
     }
 }
 
