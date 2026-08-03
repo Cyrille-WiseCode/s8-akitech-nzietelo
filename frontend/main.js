@@ -8,7 +8,7 @@
  * résultat dans le DOM. Vous n'avez rien à modifier ici.
  */
 
-const API = "http://localhost:5000/api";
+const API = "https://s8-akitech-nzietelo-2.onrender.com/api";  //url de l'API Flask (à modifier si vous utilisez un autre port ou serveur)
 
 async function api(path, options = {}) {
     const r = await fetch(`${API}${path}`, options);
