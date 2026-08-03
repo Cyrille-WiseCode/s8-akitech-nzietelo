@@ -156,7 +156,10 @@
     border-bottom: solid 2px var(--lime);
     padding-bottom: 2px;
 }
-
+.logo_navbar{
+    border-radius: 5px;
+    vertical-align: middle;
+}
 
 /*.........Footer.........*/
 footer{
