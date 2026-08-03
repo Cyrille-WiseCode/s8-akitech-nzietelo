@@ -1,1 +1,10 @@
-/    /accueil/index.html   200
+/                /accueil/index.html      200
+/accueil         /accueil/index.html      200
+/dashboard       /dashboard/index.html    200
+/inscription     /inscription/index.html  200
+/login           /login/index.html        200
+/mes-trajets     /mes-trajets/index.html  200
+/navbar          /navbar/index.html       200
+/proposer        /proposer/index.html     200
+/recherche       /recherche/index.html    200
+/footer          /footer/index.html       200
