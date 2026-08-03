@@ -1,0 +1,235 @@
+:root{
+    --lime: #C9F031;
+    --noir: #111111;
+    --blanc: #FFFFFF;
+    --beige: #EDEBDD;
+    --gris: #8C8C86;
+    --gris-fonce: #201f16;
+    --font-global: 'Poppins', sans-serif;
+}
+/* A SUPPRIMER  VU QU4ON NE VA PAS UTILISER DE DOM */
+[data-theme="dark"] {
+    --lime: #D9F553;
+    --noir: #F5F4EC;
+    --blanc: #16160F; 
+    --beige: #201F16;
+    --gris: #9A9A8E;
+}
+
+
+/* ..............NOS CLASSES POUR DES STYLES PREDEFINIS......................*/
+*{
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-global);
+}
+
+/*.............Les boutons...........*/
+.btn_principal{
+    background-color: var(--lime);
+    color: var(--noir);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+.btn_principal:hover{
+    transform: scale(1.05);
+}
+
+.btn_secondaire{
+    background-color: var(--noir);
+    color: var(--blanc);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+.btn_secondaire:hover{
+    transform: scale(1.05);
+}
+
+.btn_transparant{
+    background-color: #daf5530e;
+    color: var(--noir);
+    border: solid 1px var(--noir);
+    padding: 10px 24px;
+    border-radius: 50px;
+    transition: 0.2s;
+}
+.btn_transparant:hover{
+    background-color: var(--lime);
+    color: var(--blanc);
+    border: none;
+}
+
+.btn_voir_plus{
+    background-color: #daf5530e;
+    border: none;
+    border-bottom: solid 1px var(--noir);
+    padding: 10px 24px;
+    width: 90px;
+    transition: 0.3s;
+}
+.btn_voir_plus:hover{
+    width: 9%;
+}
+/*...........LEs cards...........*/
+
+.card{
+    background-color: var(--blanc);
+    border-radius: 20px;
+    padding: 20px;
+}
+.card_p{
+    color: var(--gris);
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+/*...........LEs textes...........*/
+
+.texte_h1{
+    font-weight: 800;
+    font-size: 2.8rem;
+    color: var(--noir);
+}
+.texte_h2{
+    font-weight: 600;
+    font-size: 2rem;
+    color: var(--noir);   
+}
+.texte_h3{
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--noir);   
+}
+.soutitre_p{
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--noir);   
+}
+.texte_p{
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--gris);
+}
+.texte_label{
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--gris-fone);
+}
+
+/*..........barre de navigation..........*/
+.accueil_navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 5px 20px;
+    background-color: var(--blanc);
+}
+.accueil_navbar div span{
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--noir);
+    text-shadow: var(--lime) 1px 1px 0px;
+}
+.accueil_navbar ul{
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+.accueil_navbar ul li{
+    display: inline;
+}
+.accueil_navbar ul li a{
+    text-decoration: none;
+    color: var(--noir);
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.accueil_navbar div a{
+    text-decoration: none;
+    color: var(--noir);
+}
+.accueil_navbar ul li a:hover{
+    border-bottom: solid 2px var(--lime);
+    padding-bottom: 2px;
+}
+
+
+/*.........Footer.........*/
+footer{
+    background-color: var(--gris-fonce);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 150px;
+
+}
+footer ul{
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+}
+footer ul li{
+    display: inline;
+}
+footer ul li a{
+    text-decoration: none;
+    color: var(--gris);
+    font-size: 0.8rem;
+}
+.footer ul li a:hover{
+    border-bottom: solid 2px var(--lime);
+    padding-bottom: 2px;
+}
+footer p {
+    color: var(--blanc);
+    font-size: 0.8rem;
+}
+
+
+
+@media screen and (max-width: 1066px){
+    .accueil_navbar{
+        display: flex ;
+        flex-direction: column;
+        height: auto;
+    }
+    .accueil_navbar ul{
+        display: flex ;
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        margin: 10px 0px;
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 768px){
+    .accueil_navbar{
+        display: flex ;
+        flex-direction: column;
+        height: auto;
+    }
+    .accueil_navbar ul{
+        display: flex ;
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        margin: 10px 0px;
+        width: 100%;
+    }
+    footer ul{
+        display: flex ;
+        flex-direction:column;
+        align-items: center;
+        min-width: 0;   
+        max-width: 100%;    
+        box-sizing: border-box;
+    }
+}

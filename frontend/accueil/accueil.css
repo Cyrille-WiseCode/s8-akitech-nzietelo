@@ -1,0 +1,219 @@
+@import url('../style.css');
+
+body{
+    background-color: var(--beige);
+}
+
+
+/*...........Hero Section...........*/
+.hero{
+    background-image: url('../images/hero_conducteur.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr  1fr  1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    box-shadow: var(--noir) 0px 4px 1p  1px;
+}
+.presentation{
+    grid-row: 1 / 8;
+    grid-column: 1 / 8;
+    background-color: #201f16b0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+.stylei_item1{
+    grid-row: 7 / 8;
+    grid-column: 1 / 5;
+    background-color: var(--beige);
+    border-radius: 0 160% 0 0;
+    border-top: dashed 3px var(--lime);
+}
+
+.stylei_item2{
+    grid-row: 7/ 8;
+    grid-column: 5 / 7;
+    background-color: var(--beige);
+    border-top: dashed 3px var(--lime);
+    border-radius: 15px 0 0 0;
+}
+.hero_h1{
+    color: var(--blanc);
+}
+
+.hero_p{
+    color: var(--blanc);
+}
+
+.hero_a{
+    text-decoration: none;
+    color: var(--noir);
+}
+
+/*.........indicateur Section.....*/
+.indicateur_liste{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin: 100px auto 20px;
+    width: 1200px;
+    gap: 20px;
+}
+.carte-indicateur{
+}
+
+/*............Projection section........*/
+.projection{
+    padding: 30px 20px;
+    background-color: var(--blanc);
+    height: auto;
+}
+.projection h2{
+    margin-bottom: 20px;
+}
+.projection_objts{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 1fr;
+}
+.projection_item1{
+    background-color: var(--noir);
+    border: solid 2px var(--lime);
+    border-radius: 15px 0 0 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.projection_item2{
+    background: none;
+}
+.projection_item2 img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 15px 15px 0;
+}
+
+.proj1{
+    color: var(--blanc);
+}
+.proj_titre{
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-shadow: var(--lime) 0px 0px 1px;
+}
+
+/*..............Fonction Section.........*/
+.fonction{
+    background-image: url('../images/proj_background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: auto;
+    margin-top: 30px;
+}
+.fonction_cover{
+    background-color: #111111da;
+    padding: 30px 20px ;
+}
+.todo_p{
+    color: var(--blanc);
+    margin-bottom: 30px;
+}
+.fonction_liste{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 200px;
+    gap: 10px;
+}
+.fonction_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.fonction_item span{
+    padding: 6px 12px;
+    border: solid 2px var(--lime);
+}
+
+/*......Pourquoi Section........*/
+.pourquoi_liste{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: 800px;
+    margin: 30px auto;
+    gap: 40px;
+}
+.pourqoi_item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: var(--blanc);
+    border: dashed 1px var(--lime);
+}
+
+/*.......FAQ......*/
+.faq{
+    margin-top: 70px;
+    text-align: center;
+}
+.faq_liste{
+    display: grid;
+    height: auto;
+    padding: 20px;
+    background-color: var(--blanc);
+    margin-top: 30px;
+}
+.faq_item{
+    width: auto;
+    margin: auto;
+}
+
+
+@media screen and (max-width: 1066px){ 
+    .indicateur_liste{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        width: auto;
+    }
+    .fonction_liste{
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+    .pourquoi_liste{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: auto;
+    }
+
+    }
+
+@media screen and (max-width: 768px){ 
+    .hero{
+        height: 1000px;
+        width: auto;
+    }
+    .indicateur_liste{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        width: auto;
+    }
+    .fonction_liste{
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+    .pourquoi_liste{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: auto;
+    }
+}
+
+

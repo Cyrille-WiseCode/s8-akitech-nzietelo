@@ -4,14 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BraCovoit — Proposer un trajet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="proposer.css">
 </head>
 <body id="page-proposer">
 
   <!-- NAVIGATION — TODO (Dev FS4) -->
-
+  <header class="accueil_head">
+        <nav class="accueil_navbar ">
+        <div>
+            <span><img src="" alt=""></span>
+            <span>Nzietelo</span>
+        </div>
+        <ul>
+            <li><a href="../accueil/index.html">Accueil</a></li>
+            <li><a href="../recherche/recherche.html">Recherche</a></li>
+            <li><a href="../proposer/proposer.html">Proposer un trajet</a></li>
+            <li><a href="../mes-trajets/mes-trajets.html">Mes trajets</a></li>
+            <li><a href="../dashboard/dashboard.html">Tableau de bord</a></li>
+        </ul>
+        <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+        <div id="nav-session"></div>
+        </nav>
+    </header>
   <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-  <div id="nav-session"></div>
+  <div id="nav-session" class="navbar"></div>
 
   <main>
     <!-- =====================================================================
@@ -25,11 +45,11 @@
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
     <form id="form-proposer">
-      <label for="p-depart">Quartier de départ</label>
-      <select id="p-depart"></select>
+      <label for="p-depart" class="text_label">Quartier de départ<span>*</span></label>
+      <select id="p-depart" required></select>
 
-      <label for="p-arrivee">Quartier d'arrivée</label>
-      <select id="p-arrivee"></select>
+      <label for="p-arrivee">Quartier d'arrivée<span>*</span></label>
+      <select id="p-arrivee" required></select>
 
       <label for="p-heure">Heure (HH:MM)</label>
       <input type="text" id="p-heure" placeholder="07:30">
@@ -40,17 +60,28 @@
       <label for="p-prix">Prix par place (FCFA)</label>
       <input type="number" id="p-prix" min="1">
 
-      <button type="submit">Publier mon trajet</button>
+      <button type="submit" class="btn_principal">Publier mon trajet</button>      
     </form>
 
     <!-- Zone d'erreurs de validation — TODO (Dev FS4) : mettre en forme la
          liste <ul><li> injectée par main.js en cas de formulaire invalide.
          NE PAS MODIFIER l'id. -->
-    <div id="erreurs-form" hidden></div>
+    <div id="erreurs-form" hidden class="encart"></div>
 
     <!-- BLOC D'AIDE — TODO (Dev FS4) : encart explicatif optionnel
          (ex. rappel que le prix est libre, conseils de sécurité) -->
   </main>
+
+  <footer>
+        <ul>
+            <li><a href="../accueil/index.html">Accueil</a></li>
+            <li><a href="../recherche/recherche.html">Recherche</a></li>
+            <li><a href="../proposer/proposer.html">Proposer un trajet</a></li>
+            <li><a href="../mes-trajets/mes-trajets.html">Mes trajets</a></li>
+            <li><a href="../dashboard/dashboard.html">Tableau de bord</a></li>
+        </ul>
+        <p> &copy;  Tous droits réservés -<span class="proj_titre">Nzietelo</span></p>
+    </footer>
 
   <div id="erreur-globale" hidden></div>
 

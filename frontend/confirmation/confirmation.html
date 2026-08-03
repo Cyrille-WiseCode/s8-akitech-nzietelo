@@ -4,12 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BraCovoit — Confirmation</title>
+  <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="confirmation.css">
 </head>
 <body id="page-confirmation">
 
   <!-- NAVIGATION — TODO (Dev FS6) -->
-
+  <header class="accueil_head">
+        <nav class="accueil_navbar ">
+        <div>
+            <span><img src="" alt=""></span>
+            <span>Nzietelo</span>
+        </div>
+        <ul>
+            <li><a href="../accueil/index.html">Accueil</a></li>
+            <li><a href="../recherche/recherche.html">Recherche</a></li>
+            <li><a href="../proposer/proposer.html">Proposer un trajet</a></li>
+            <li><a href="../mes-trajets/mes-trajets.html">Mes trajets</a></li>
+            <li><a href="../dashboard/dashboard.html">Tableau de bord</a></li>
+        </ul>
+        <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
+        <div id="nav-session"></div>
+        </nav>
+    </header>
   <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
   <div id="nav-session"></div>
 
@@ -22,18 +39,21 @@
          *** NE PAS MODIFIER l'id — main.js injecte le message ***
          ===================================================================== -->
     <section class="bloc-confirmation">
-      <h1>Merci !</h1>
-      <p id="confirmation-message"></p>
+      <img src="../images/verifier.png" alt="icone confirmé">
+      <h1 class="texte_h1">Merci !</h1>
+      <p id="confirmation-message" class="texte_p"></p>
     </section>
 
     <!-- PROCHAINES ÉTAPES — TODO (Dev FS6) : mettre en forme ces 3 liens
          (boutons ou cartes de navigation).
          NE PAS MODIFIER les href/id des liens. -->
     <section class="prochaines-etapes">
-      <h2>Prochaines étapes</h2>
-      <a href="../accueil/index.html">Retour à l'accueil</a>
-      <a id="lien-mes-trajets" href="../mes-trajets/mes-trajets.html">Voir mes trajets</a>
-      <a href="../recherche/recherche.html">Rechercher d'autres trajets</a>
+      <h2 class="texte_h2">Prochaines étapes</h2>
+      <div class="links">
+        <a href="../accueil/index.html">Retour à l'accueil</a>
+        <a id="lien-mes-trajets" href="../mes-trajets/mes-trajets.html">Voir mes trajets</a>
+        <a href="../recherche/recherche.html">Rechercher d'autres trajets</a>
+      </div>
     </section>
   </main>
 
