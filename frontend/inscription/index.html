@@ -1,204 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nzietelo — Covoiturage</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nzietelo — Inscription</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="accueil.css">
-</head>
-<body id="page-accueil">
+    <link rel="stylesheet" href="inscription.css" />
+  </head>
+  <body id="page-inscription">
+    <!-- NAVIGATION — TODO (Dev FS7)
+       NE PAS SUPPRIMER l'id nav-session car main.js y injecte les boutons.
+       Nous allons simplement le masquer via CSS pour éviter le doublon. -->
+    <div id="nav-session"></div>
 
-  <!-- =====================================================================
-       NAVIGATION — TODO (Dev FS1)
-       Construire un menu de navigation vers les 9 pages du site (Accueil,
-       Recherche, Proposer un trajet, Mes trajets, Tableau de bord,
-       Inscription, Connexion).
-       Doit inclure un menu burger fonctionnel en dessous de 768px.
-       ===================================================================== -->
-  <header class="accueil_head">
-    <nav class="accueil_navbar ">
-      <div>
-        <span><img class="logo_navbar" width="50" height="auto" src="../images/logo.jpeg" alt=""></span>
-        <span>Nzietelo</span>
-      </div>
-      <ul>
-        <li><a href="/accueil/index.html">Accueil</a></li>
-        <li><a href="/recherche/recherche.html">Recherche</a></li>
-        <li><a href="/proposer/proposer.html">Proposer un trajet</a></li>
-        <li><a href="/mes-trajets/mes-trajets.html">Mes trajets</a></li>
-        <li><a href="/dashboard/dashboard.html">Tableau de bord</a></li>
-      </ul>
-      <!-- NE PAS MODIFIER l'id — main.js y affiche l'état de connexion -->
-      <div id="nav-session"></div>
-    </nav>
-  </header>
+    <main>
+      <!-- Colonne gauche : illustration / slogan -->
+      <secton class="section-gauche">
+        <img
+          src="../images/Mcovoit__ecov-scaled.webp"
+          alt="Image Nzietelo covoiturage"
+        />
+        <h1>S'inscrire sur Nzietelo</h1>
+        <p>
+          Votre solution efficace à moindre coût de covoiturage à Brazzaville.
+        </p>
+      </secton>
 
-  <main>
-    <!-- =====================================================================
-         HERO — TODO (Dev FS1)
-         Section d'introduction : titre accrocheur, sous-titre expliquant le
-         principe (mise en relation conducteurs/passagers à Brazzaville),
-         bouton d'appel à l'action vers la page Recherche.
-         ===================================================================== -->
-         <Section class="hero">
-          <div class="presentation">
-            <h1 class="texte_h1 hero_h1">Déplacez-vous plus facilement, <br> en partageant vos trajets en toute sécurité.</h1>
-            <p class=" .soutitre_p  hero_p">
-                Vous cherchez un moyen de transport rapide et fiable ? <br> Vous souhaitez réduire vos frais de carburant à Brazzaville ? <br> Partagez vos trajets avec des personnes effectuant le même itinéraire que vous <br> et réduisez simplement vos frais de transport avec Nzietelo.
-              <div>
-                <button class="btn_principal"><a class="hero_a" href="../recherche/recherche.html">Commencez maintenant</a></button>
-              </div>
-            </p>
-          </div>
-            <img src="" alt="">
-          <div class="stylei_item1"></div>
-          <div class="stylei_item2"></div>
-         </Section>
+      <!-- Colonne droite : formulaire -->
+      <section class="section-droite">
+        <!-- FORMULAIRE — TODO (Dev FS7)
+           Respecter les IDs utilisés par main.js -->
+        <form id="form-inscription">
+          <h2 class="texte_h1" >Inscription</h2>
+          <label for="i-nom">Nom</label>
+          <input type="text" id="i-nom" />
 
-    <!-- =====================================================================
-         CARTES INDICATEURS — TODO (Dev FS1)
-         Construire 4 cartes affichant les indicateurs clés du service.
-         Layout : Flexbox ou Grid, responsive (1 colonne mobile, 2 colonnes
-         tablette, 4 colonnes desktop).
+          <label for="i-telephone">Téléphone</label>
+          <input type="tel" id="i-telephone" placeholder="066123456" />
 
-         *** NE PAS MODIFIER les id ci-dessous — main.js les utilise pour
-         injecter les valeurs calculées par le backend ***
-         ===================================================================== -->
-    <section class="indicateur_liste">
-      <div class=" card carte-indicateur">
-        <p class="soutitre_p label">Trajets aujourd'hui</p>
-        <p id="nb-trajets-aujourdhui" class="valeur"></p>
-      </div>
-      <div class=" card carte-indicateur">
-        <p class=" soutitre_p label">Quartier le plus actif</p>
-        <p id="quartier-principal" class="valeur"></p>
-      </div>
-      <div class=" card carte-indicateur">
-        <p class=" soutitre_p label">Conducteurs actifs</p>
-        <p id="nb-conducteurs" class="valeur"></p>
-      </div>
-      <div class="card carte-indicateur">
-        <p class=" soutitre_p label">Note moyenne</p>
-        <p id="note-moyenne" class="valeur"></p>
-      </div>
-    </section>
+          <label for="i-mot-de-passe">Mot de passe</label>
+          <input type="password" id="i-mot-de-passe" />
 
-    <section class="projection">
-      <h2 class="texte_h3">Et si vos trajets étaient organisés à l'avance ?</h2>
-      <div class="projection_objts">
-        <div class="projection_item1">
-          <p class="card_p proj1">Imaginez pouvoir connaître à l'avance votre itinéraire, l'heure de départ, la personne avec qui vous allez le partager, le coût du déplacement et les places disponibles dans le véhicule.</p>
-          <p class="card_p proj2">Plus besoin d'attendre sans savoir quand partir, de chercher un transport au dernier moment ou de subir des coûts imprévus.</p>
-          <p class="card_p proj1">Avec <span class="proj_titre">Nzietelo</span>, les passagers trouvent un trajet adapté à leurs besoins et les conducteurs partagent leurs places disponibles avec des personnes identifiées qui effectuent le même itinéraire.</p>
-          <p class="card_p proj2">Résultat : vous gagnez du temps, vous maîtrisez votre budget transport et vous gardez le contrôle de votre déplacement, du début à la fin</p>
-        </div>
-        <div class="projection_item2">
-          <img  src="../images/proj_photo.avif" alt="">
-        </div>
-        </div>
-      </div>
+          <button type="submit">Créer mon compte</button>
+          <span
+          ><a href="/login">Déjà un compte ? Se connecter</a></span
+        >
+        </form>
 
-    </section>
-    <!-- =====================================================================
-         COMMENT ÇA MARCHE — TODO (Dev FS1)
-         3 à 4 étapes illustrant le parcours utilisateur : rechercher un
-         trajet → réserver une place → rejoindre le conducteur. Layout en
-         ligne sur desktop, empilé sur mobile.
-         ===================================================================== -->
+        <!-- Zone d’erreurs de validation — TODO (Dev FS7) -->
+        <div id="erreurs-form" hidden></div>
 
-    <section class="fonction">
-      <div class="fonction_cover">
-        <h2 class="texte_h3 todo_p">Comment ça fonctionne ?</h2>
-        <div class="fonction_liste">
-            <div class=" card fonction_item">
-              <h3 class="soutitre_p"><span>1</span> Recherchez  un trajet</h3>
-              <p class="card_p">Indiquez votre point de départ, votre destination et l'heure souhaitée.Trouvez un conducteur qui effectue le même itinéraire.</p>
-            </div>
-            <div class=" card fonction_item">
-              <h3 class="soutitre_p"><span>2</span> Réservez une place </h3>
-              <p class="card_p">Découvrez le profil du conducteur, l'heure de départ, le lieu de rendez-vous, les informations du véhicule et le prix du trajet. Validez votre réservation </p>
-            </div>
-            <div class=" card fonction_item">
-              <h3 class="soutitre_p"><span>3</span>rejoignez le conducteur</h3>
-              <p class="card_p">Retrouvez-vous au point de rendez-vous fixé depuis l'application, partagez le trajet et arrivez à destination sans les longues attentes habituelles.</p>
-            </div>
-            <div class=" card fonction_item">
-              <h3 class="soutitre_p"><span>4</span>Évaluez votre expérience</h3>
-              <p class="card_p">Après le trajet, laissez un avis pour aider la communauté à voyager avec des personnes fiables et renforcer la confiance entre les utilisateurs.</p>
-            </div>
-        </div>
-      </div>
-    </section>
+        <!-- LIEN VERS LOGIN — TODO (Dev FS7) -->
 
-    <!-- =====================================================================
-         POURQUOI BRACOVOIT — TODO (Dev FS1)
-         3 arguments clés (économique, écologique, communautaire par
-         exemple). Layout en grille de cartes.
-         ===================================================================== -->
-      <section class="pourquoi">
-        <div class="pourquoi_liste">
-          <div class="pourqoi_item">
-            <h3 class="soutitre_p">Sachez avec qui vous voyagez avant le départ </h3>
-            <p class="card_p">cconsultez le profil du conducteur ou du passager afin de partir avec davantage de confiance.
-            </p>
-          </div>
-          <div class="pourqoi_item">
-            <h3 class="soutitre_p">Gagnez du temps</h3>
-            <p class="card_p">organisez votre trajet à l'avance, choisissez l'heure qui vous convient et évitez les longues attentes en bord de route.</p>
-          </div>
-          <div class="pourqoi_item">
-            <h3 class="soutitre_p">Maîtrisez votre budget transport </h3>
-            <p class="card_p">le coût du trajet est indiqué avant le départ, ce qui vous permet de partager les frais et d'éviter les mauvaises surprises.</p>
-          </div>
-        </div>
-      </section>
-      <section class="faq">
-        <h3 class="texte_h2">FAQ Nzietelo </h3>
-        <div class="faq_liste">
-          <div class="faq_item">
-            <h3 class="soutitre_p">Comment fonctionne le covoiturage à Brazzaville ?</h3>
-            <p class="card_p">Le covoiturage permet à des conducteurs et des passagers qui effectuent le même trajet de partager un véhicule et les frais de transport. Avec Nzietelo, vous pouvez rechercher ou proposer un trajet, consulter les informations avant le départ et organiser votre déplacement en quelques étapes</p>
-            <br>
-            <h3 class="soutitre_p">Le covoiturage est-il sécurisé ?</h3>
-            <p class="card_p">Avec Nzietelo, vous pouvez consulter les informations du conducteur ou du passager ainsi que les détails du trajet avant votre départ. Vous savez avec qui vous allez voyager avant de confirmer votre déplacement, et vos données personnelles ne sont partagées qu'avec les personnes concernées par le trajet.</p>
-            <br>
-            <h3 class="soutitre_p">Comment connaître le prix d'un trajet avant de partir ?</h3>
-            <p class="card_p">Le prix du trajet est indiqué avant la réservation. Vous savez ainsi combien vous allez payer avant votre départ et pouvez mieux prévoir votre budget transport.</p>
-            <br>
-            <h3 class="soutitre_p">Comment réserver un trajet ?</h3>
-            <p class="card_p">Recherchez un trajet correspondant à votre destination, envoyez votre demande de réservation et attendez sa confirmation avant le départ.</p>
-            <br>
-            <h3 class="soutitre_p">Qui peut utiliser Nzietelo ?</h3>
-            <p class="card_p">Toute personne souhaitant partager un trajet peut utiliser Nzietelo. Que vous soyez conducteur avec des places disponibles ou passager à la recherche d'un moyen de transport, l'application vous permet de trouver des personnes effectuant le même itinéraire que vous.</p>
-            <br>
-            <h3 class="soutitre_p">Comment proposer un trajet avec Nzietelo ?</h3>
-            <p class="card_p">Indiquez votre point de départ, votre destination, votre heure de départ et le nombre de places disponibles. Les passagers effectuant le même itinéraire pourront envoyer une demande de réservation.</p>
-          </div>
-        </div>
-      </section>
-  </main>
+        
+      </secti>
+    </main>
 
-  <!-- FOOTER — TODO (Dev FS1) : liens utiles, mentions -->
-  <footer>
-    <ul>
-        <li><a href="/accueil/index.html">Accueil</a></li>
-        <li><a href="/recherche/recherche.html">Recherche</a></li>
-        <li><a href="/proposer/proposer.html">Proposer un trajet</a></li>
-        <li><a href="/mes-trajets/mes-trajets.html">Mes trajets</a></li>
-        <li><a href="/dashboard/dashboard.html">Tableau de bord</a></li>
-    </ul>
-    <p> &copy;  Tous droits réservés -<span class="proj_titre">Nzietelo</span></p>
-  </footer>
+    <!-- Zone d’erreur globale — TODO (Dev FS7) -->
+    <div id="erreur-globale" hidden></div>
 
-
-  <div id="erreur-globale" hidden></div>
-
-
-  <!-- NE PAS MODIFIER — scripts de connexion au backend -->
-  <script src="../functions.js"></script>
-  <script src="../main.js"></script>
-</body>
+    <script src="../functions.js"></script>
+    <script src="../main.js"></script>
+  </body>
 </html>
